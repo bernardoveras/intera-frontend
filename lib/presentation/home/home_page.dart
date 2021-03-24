@@ -1,27 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:intera/presentation/home/components/total_of_interas.dart';
 import '../../shared/extensions/screen_util_extension.dart';
-import 'components/app_bar/app_bar.dart';
+import 'components/components.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
+  late TabController tabController;
+
+  @override
+  void initState() {
+    tabController = TabController(length: 2, vsync: this);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: HomeAppBar(),
-      body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Padding(
-          padding: EdgeInsets.only(
-            left: 20.width,
-            right: 20.width,
-            bottom: 20.height,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(
+              left: 20.width,
+              right: 20.width,
+            ),
+            child: TotalOfInteras(total: 10),
           ),
-          child: Column(
-            children: [
-              TotalOfInteras(total: 10),
-            ],
-          ),
-        ),
+        ],
       ),
     );
   }
