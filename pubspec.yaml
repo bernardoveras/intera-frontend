@@ -26,15 +26,11 @@ flutter:
   uses-material-design: true
 
   fonts:
-    - family: Inter
+    - family: Circular
       fonts:
-        - asset: assets/fonts/Inter-Light.ttf
-          weight: 300
-        - asset: assets/fonts/Inter-Regular.ttf
+        - asset: assets/fonts/Circular-Std-Book.ttf
           weight: 400
-        - asset: assets/fonts/Inter-Medium.ttf
+        - asset: assets/fonts/Circular-Std-Medium.ttf
           weight: 500
-        - asset: assets/fonts/Inter-SemiBold.ttf
-          weight: 600
-        - asset: assets/fonts/Inter-Bold.ttf
+        - asset: assets/fonts/Circular-Std-Bold.ttf
           weight: 700
