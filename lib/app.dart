@@ -15,7 +15,7 @@ class App extends StatelessWidget {
       allowFontScaling: true,
       builder: () {
         return GetMaterialApp(
-          title: 'Title',
+          title: 'Intera',
           debugShowCheckedModeBanner: false,
           initialRoute: initialRoute,
           getPages: Navigation.routes,
