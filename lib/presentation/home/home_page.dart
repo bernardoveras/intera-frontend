@@ -12,9 +12,9 @@ class HomePage extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         child: Padding(
           padding: EdgeInsets.only(
-            left: 20,
-            right: 20,
-            bottom: 20,
+            left: 20.width,
+            right: 20.width,
+            bottom: 20.height,
           ),
           child: Column(
             children: [

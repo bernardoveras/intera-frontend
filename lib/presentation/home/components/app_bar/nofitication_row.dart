@@ -20,6 +20,7 @@ class NotificationRow extends StatelessWidget {
           child: Row(
             children: [
               IconButton(
+                padding: EdgeInsets.zero,
                 focusColor: Colors.transparent,
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
@@ -34,6 +35,7 @@ class NotificationRow extends StatelessWidget {
                 },
               ),
               IconButton(
+                padding: EdgeInsets.zero,
                 focusColor: Colors.transparent,
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
