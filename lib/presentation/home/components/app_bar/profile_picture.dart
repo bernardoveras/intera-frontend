@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import '../../../shared/extensions/screen_util_extension.dart';
-import '../../../shared/theme/theme.dart';
+import '../../../../shared/extensions/screen_util_extension.dart';
+import '../../../../shared/theme/theme.dart';
 
 class ProfilePicture extends StatelessWidget {
   final String? url;
