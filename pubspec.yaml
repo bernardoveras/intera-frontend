@@ -1,0 +1,40 @@
+name: intera
+description: Intera App
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+dependencies:
+  # Framework para gerência de estado/injeção de dependência/navegação, etc...
+  get: ^4.0.0-nullsafety.2
+  # Package para gerenciar os arquivos locais
+  get_storage: ^2.0.1
+  # Framework para responsividade
+  flutter_screenutil: ^5.0.0-nullsafety.11  
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  # Package para mock's nos testes
+  mocktail: ^0.1.1
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Inter-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Inter-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inter-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Inter-Bold.ttf
+          weight: 700
