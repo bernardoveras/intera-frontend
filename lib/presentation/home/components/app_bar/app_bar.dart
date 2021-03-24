@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:intera/presentation/home/components/app_bar/nofitication_row.dart';
-import 'package:intera/presentation/home/components/app_bar/profile_name.dart';
-import 'package:intera/presentation/home/components/app_bar/profile_picture.dart';
+import 'package:intera/shared/settings.dart';
 import '../../../../shared/extensions/screen_util_extension.dart';
+import 'components.dart';
 
 class HomeAppBar extends PreferredSize {
   HomeAppBar({Key? key})
@@ -17,15 +16,12 @@ class HomeAppBar extends PreferredSize {
                 children: [
                   Row(
                     children: [
-                      ProfilePicture(
-                        url:
-                            'https://avatars.githubusercontent.com/u/56937988?s=400&u=cf67cf7b78fc452958f03c63b16f29bb91881449&v=4',
-                      ),
+                      ProfilePicture(url: Settings.usernameImage),
                       SizedBox(width: 20.width),
-                      ProfileName(profileName: 'Bernardo'),
+                      ProfileName(profileName: Settings.username),
                     ],
                   ),
-                  NotificationRow(hasNotification: true),
+                  NotificationRow(hasNotification: false),
                 ],
               ),
             ),

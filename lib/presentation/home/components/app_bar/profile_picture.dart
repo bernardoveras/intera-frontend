@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:intera/shared/settings.dart';
 import '../../../../shared/extensions/screen_util_extension.dart';
 import '../../../../shared/theme/theme.dart';
 
@@ -28,13 +29,11 @@ class ProfilePicture extends StatelessWidget {
             ? Padding(
                 padding: EdgeInsets.all(3.height),
                 child: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    url!,
-                  ),
+                  backgroundImage: NetworkImage(url!),
                 ),
               )
             : Text(
-                'B',
+                Settings.username.substring(0, 1).toUpperCase(),
                 style: TextStyle(
                   color: Theme.of(context).backgroundColor,
                   fontWeight: FontWeight.w500,
