@@ -8,7 +8,7 @@ class HomeAppBar extends PreferredSize {
   HomeAppBar({Key? key})
       : super(
           key: key,
-          preferredSize: Size.fromHeight(100.height),
+          preferredSize: Size.fromHeight(124.height),
           child: SafeArea(
             child: Container(
               padding: EdgeInsets.all(20.height),
