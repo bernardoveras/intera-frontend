@@ -14,7 +14,7 @@ class Initializer {
 
   static void _setStatusBar() {
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle.light.copyWith(
+      SystemUiOverlayStyle.dark.copyWith(
         statusBarColor: Colors.transparent,
       ),
     );

@@ -12,7 +12,9 @@ dependencies:
   # Package para gerenciar os arquivos locais
   get_storage: ^2.0.1
   # Framework para responsividade
-  flutter_screenutil: ^5.0.0-nullsafety.11  
+  flutter_screenutil: ^5.0.0-nullsafety.11
+  # Package para animações
+  animate_do: ^2.0.0
   flutter:
     sdk: flutter
 
