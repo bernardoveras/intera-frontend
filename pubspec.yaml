@@ -15,6 +15,8 @@ dependencies:
   flutter_screenutil: ^5.0.0-nullsafety.11
   # Package para animações
   animate_do: ^2.0.0
+  # Package para Formatações de textos
+  intl: ^0.17.0
   flutter:
     sdk: flutter
 
