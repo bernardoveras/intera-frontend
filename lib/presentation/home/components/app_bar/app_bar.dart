@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:intera/presentation/home/components/nofitication_row.dart';
-import 'package:intera/presentation/home/components/profile_name.dart';
-import 'package:intera/presentation/home/components/profile_picture.dart';
-import '../../../shared/extensions/screen_util_extension.dart';
+import 'package:intera/presentation/home/components/app_bar/nofitication_row.dart';
+import 'package:intera/presentation/home/components/app_bar/profile_name.dart';
+import 'package:intera/presentation/home/components/app_bar/profile_picture.dart';
+import '../../../../shared/extensions/screen_util_extension.dart';
 
 class HomeAppBar extends PreferredSize {
   HomeAppBar({Key? key})
       : super(
           key: key,
-          preferredSize: Size.fromHeight(100.height),
+          preferredSize: Size.fromHeight(124.height),
           child: SafeArea(
             child: Container(
               padding: EdgeInsets.all(20.height),
@@ -25,9 +25,7 @@ class HomeAppBar extends PreferredSize {
                       ProfileName(profileName: 'Bernardo'),
                     ],
                   ),
-                  NotificationRow(
-                    hasNotification: true,
-                  ),
+                  NotificationRow(hasNotification: true),
                 ],
               ),
             ),

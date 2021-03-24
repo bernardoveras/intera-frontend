@@ -1,6 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import '../../../shared/extensions/screen_util_extension.dart';
+import '../../../../shared/extensions/screen_util_extension.dart';
 
 class ProfileName extends StatelessWidget {
   final String profileName;
