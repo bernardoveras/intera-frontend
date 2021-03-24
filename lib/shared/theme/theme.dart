@@ -22,7 +22,7 @@ class AppTheme {
   static Color background = Color(0xFFFAFAFC);
   static Color backgroundDark = Color(0xFF121214);
 
-  /// Init `theme data` from application
+  /// Init `theme light data` from application
   static ThemeData light(BuildContext context) {
     return ThemeData(
       brightness: Brightness.light,
@@ -57,7 +57,7 @@ class AppTheme {
   static AppBarTheme? _appBarTheme(BuildContext context) {
     return AppBarTheme(
       textTheme: Theme.of(context).textTheme.apply(
-            fontFamily: 'Inter',
+            fontFamily: 'Circular',
             bodyColor: Colors.white,
             displayColor: Colors.white,
             decoration: TextDecoration.none,
@@ -72,7 +72,7 @@ class AppTheme {
 
   static TextTheme _textTheme(BuildContext context) {
     return Theme.of(context).textTheme.apply(
-          fontFamily: 'Inter',
+          fontFamily: 'Circular',
           decoration: TextDecoration.none,
         );
   }
