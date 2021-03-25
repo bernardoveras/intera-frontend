@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.intera">
+    package="br.com.veras.intera">
    <application
         android:label="Intera"
         android:requestLegacyExternalStorage="true"

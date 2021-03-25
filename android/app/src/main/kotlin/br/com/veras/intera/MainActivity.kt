@@ -1,4 +1,4 @@
-package com.example.intera
+package br.com.veras.intera
 
 import io.flutter.embedding.android.FlutterActivity
 
