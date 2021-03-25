@@ -19,8 +19,8 @@ class App extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           initialRoute: initialRoute,
           getPages: Navigation.routes,
-          theme: AppTheme.light(context),
-          darkTheme: AppTheme.dark(context),
+          theme: AppTheme.light,
+          darkTheme: AppTheme.dark,
           builder: (context, child) => GestureDetector(
             onTap: () {
               FocusManager.instance.primaryFocus?.unfocus();

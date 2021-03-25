@@ -23,80 +23,252 @@ class AppTheme {
   static Color backgroundDark = Color(0xFF17191F);
 
   /// Init `theme light data` from application
-  static ThemeData light(BuildContext context) {
-    return ThemeData(
+  static final ThemeData light = ThemeData(
+    appBarTheme: AppBarTheme(
+      actionsIconTheme: IconThemeData(),
       brightness: Brightness.light,
-      primaryColor: primary,
-      primaryColorDark: primaryDark,
-      primaryColorLight: primaryLight,
-      scaffoldBackgroundColor: background,
-      dialogBackgroundColor: background,
-      backgroundColor: background,
-      accentColor: secondary,
-      appBarTheme: _appBarTheme(context),
-      textTheme: _textTheme(context),
-      floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: primary,
-        elevation: 0,
-        hoverElevation: 0,
-        focusElevation: 0,
-        highlightElevation: 0,
-        disabledElevation: 0,
-        foregroundColor: Colors.white,
-        hoverColor:  Colors.transparent,
-        focusColor: Colors.transparent,
-        splashColor:  Colors.transparent,
+      iconTheme: IconThemeData(),
+      textTheme: TextTheme(),
+    ),
+    primaryColor: primary,
+    primaryColorDark: primaryDark,
+    primaryColorLight: primaryLight,
+    accentColorBrightness: Brightness.light,
+    backgroundColor: background,
+    buttonColor: primary,
+    floatingActionButtonTheme: FloatingActionButtonThemeData(),
+    accentColor: primary,
+    splashColor: primary,
+    scaffoldBackgroundColor: background,
+    cardColor: Colors.white,
+    cardTheme: CardTheme(
+      color: Colors.white,
+    ),
+    iconTheme: IconThemeData(),
+    textTheme: TextTheme(
+      headline1: TextStyle(
+        fontFamily: 'Circular',
+        fontSize: 96,
+        fontWeight: FontWeight.w300,
+        letterSpacing: -1.5,
       ),
-    );
-  }
+      headline2: TextStyle(
+        fontFamily: 'Circular',
+        fontSize: 60,
+        fontWeight: FontWeight.w300,
+        letterSpacing: -0.5,
+      ),
+      headline3: TextStyle(
+        fontFamily: 'Circular',
+        fontSize: 48,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0,
+      ),
+      headline4: TextStyle(
+        fontFamily: 'Circular',
+        fontSize: 34,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.25,
+      ),
+      headline5: TextStyle(
+        fontFamily: 'Circular',
+        fontSize: 24,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0,
+      ),
+      headline6: TextStyle(
+        fontFamily: 'Circular',
+        fontSize: 20,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.15,
+      ),
+      subtitle1: TextStyle(
+          fontFamily: 'Circular',
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+          letterSpacing: 0.15),
+      subtitle2: TextStyle(
+        fontFamily: 'Circular',
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.1,
+      ),
+      bodyText1: TextStyle(
+          fontFamily: 'Circular',
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+          letterSpacing: 0.5),
+      bodyText2: TextStyle(
+        fontFamily: 'Circular',
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.25,
+      ),
+      button: TextStyle(
+        fontFamily: 'Circular',
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 1.25,
+      ),
+      caption: TextStyle(
+        fontFamily: 'Circular',
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.4,
+      ),
+      overline: TextStyle(
+        fontFamily: 'Circular',
+        fontSize: 10,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 1.5,
+      ),
+    ),
+    buttonTheme: ButtonThemeData(),
+  );
 
   /// Init `theme dark data` from application
-  static ThemeData dark(BuildContext context) {
-    return Theme.of(context).copyWith(
-      brightness: Brightness.dark,
-      primaryColor: primary,
-      primaryColorDark: primaryDark,
-      primaryColorLight: primaryLight,
-      scaffoldBackgroundColor: backgroundDark,
-      dialogBackgroundColor: backgroundDark,
-      backgroundColor: backgroundDark,
-      appBarTheme: _appBarTheme(context),
-      textTheme: _textTheme(context),
-      floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: primary,
-        elevation: 0,
-        hoverElevation: 0,
-        focusElevation: 0,
-        highlightElevation: 0,
-        disabledElevation: 0,
-        foregroundColor: Colors.white,
-        hoverColor:  Colors.transparent,
-        focusColor: Colors.transparent,
-        splashColor:  Colors.transparent,
-      ),
-    );
-  }
-
-  static AppBarTheme? _appBarTheme(BuildContext context) {
-    return AppBarTheme(
-      textTheme: Theme.of(context).textTheme.apply(
-            fontFamily: 'Circular',
-            bodyColor: Colors.white,
-            displayColor: Colors.white,
-            decoration: TextDecoration.none,
-          ),
+  static final ThemeData dark = ThemeData(
+    appBarTheme: AppBarTheme(
+      actionsIconTheme: IconThemeData(),
       brightness: Brightness.dark,
       color: primary,
-      foregroundColor: Colors.white,
-      elevation: 0,
-      centerTitle: true,
-    );
-  }
+      iconTheme: IconThemeData(),
+      textTheme: TextTheme(),
+    ),
+    primaryColor: primary,
+    primaryColorDark: primaryDark,
+    primaryColorLight: primaryLight,
+    accentColorBrightness: Brightness.dark,
+    backgroundColor: backgroundDark,
+    buttonColor: primary,
+    dividerColor: Colors.white30,
+    floatingActionButtonTheme: FloatingActionButtonThemeData(),
+    accentColor: primary,
+    splashColor: primary,
+    scaffoldBackgroundColor: backgroundDark,
+    cardColor: Colors.grey.shade900,
+    cardTheme: CardTheme(
+      color: Colors.grey.shade900,
+    ),
+    iconTheme: IconThemeData(),
+    textTheme: TextTheme(
+      headline1: TextStyle(
+        fontFamily: 'Circular',
+        fontSize: 96,
+        fontWeight: FontWeight.w300,
+        letterSpacing: -1.5,
+        color: Colors.white12,
+      ),
+      headline2: TextStyle(
+        fontFamily: 'Circular',
+        fontSize: 60,
+        fontWeight: FontWeight.w300,
+        letterSpacing: -0.5,
+        color: Colors.white24,
+      ),
+      headline3: TextStyle(
+        fontFamily: 'Circular',
+        fontSize: 48,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0,
+        color: Colors.white30,
+      ),
+      headline4: TextStyle(
+        fontFamily: 'Circular',
+        fontSize: 34,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.25,
+        color: Colors.white24,
+      ),
+      headline5: TextStyle(
+        fontFamily: 'Circular',
+        fontSize: 24,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0,
+        color: Colors.white70,
+      ),
+      headline6: TextStyle(
+        fontFamily: 'Circular',
+        fontSize: 20,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.15,
+        color: Colors.white,
+      ),
+      subtitle1: TextStyle(
+        fontFamily: 'Circular',
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.15,
+        color: Colors.white,
+      ),
+      subtitle2: TextStyle(
+        fontFamily: 'Circular',
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.1,
+        color: Colors.white,
+      ),
+      bodyText1: TextStyle(
+        fontFamily: 'Circular',
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.5,
+        color: Colors.white,
+      ),
+      bodyText2: TextStyle(
+        fontFamily: 'Circular',
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.25,
+        color: Colors.white,
+      ),
+      button: TextStyle(
+        fontFamily: 'Circular',
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 1.25,
+        color: Colors.white,
+      ),
+      caption: TextStyle(
+        fontFamily: 'Circular',
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.4,
+        color: Colors.white30,
+      ),
+      overline: TextStyle(
+        fontFamily: 'Circular',
+        fontSize: 10,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 1.5,
+        color: Colors.white24,
+      ),
+    ),
+    buttonTheme: ButtonThemeData(
+      buttonColor: primary,
+    ),
+  );
 
-  static TextTheme _textTheme(BuildContext context) {
-    return Theme.of(context).textTheme.apply(
-          fontFamily: 'Circular',
-          decoration: TextDecoration.none,
-        );
-  }
+  // static AppBarTheme? _appBarTheme(BuildContext context) {
+  //   return AppBarTheme(
+  //     textTheme: Theme.of(context).textTheme.apply(
+  //           fontFamily: 'Circular',
+  //           bodyColor: Colors.white,
+  //           displayColor: Colors.white,
+  //           decoration: TextDecoration.none,
+  //         ),
+  //     brightness: Brightness.dark,
+  //     color: primary,
+  //     foregroundColor: Colors.white,
+  //     elevation: 0,
+  //     centerTitle: true,
+  //   );
+  // }
+
+  // static TextTheme _textTheme(BuildContext context) {
+  //   return Theme.of(context).textTheme.apply(
+  //         fontFamily: 'Circular',
+  //         decoration: TextDecoration.none,
+  //       );
+  // }
 }
