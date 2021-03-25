@@ -18,7 +18,7 @@ class LocalStorageService implements ILocalStorage {
 
   // Reads all value of any type from persistent storage.
   @override
-  Future<Map<String, String>> getAll() async => await _storage.getValues();
+  Future<dynamic> getAll() async => await _storage.getValues();
 
   /// Removes an entry from persistent storage.
   @override

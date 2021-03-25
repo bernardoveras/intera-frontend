@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'shared/extensions/int_extensions.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intera/shared/settings.dart';
@@ -12,21 +12,30 @@ class Initializer {
   static Future<void> init() async {
     try {
       WidgetsFlutterBinding.ensureInitialized();
-      _setStatusBar();
-      _startLocalStorage();
+      await _startLocalStorage();
+      _startTheme();
     } catch (e) {
       print(e);
       rethrow;
     }
   }
 
-  static void _setStatusBar() {
+  static void _startTheme() async {
+    ILocalStorage storage = Get.find();
+
+    int? theme = int.tryParse(await storage.get('theme') ?? 'null');
+
+    if (theme != null) {
+      Settings.theme = theme.toThemeMode;
+    }
+
     Settings.theme == ThemeMode.light
         ? AppTheme.changeStatusBar<Dark>()
         : AppTheme.changeStatusBar<Light>();
   }
 
-  static void _startLocalStorage() {
+  static Future<void> _startLocalStorage() async {
+    await GetStorage.init();
     Get.lazyPut<ILocalStorage>(() => LocalStorageService(GetStorage()),
         fenix: true);
   }
