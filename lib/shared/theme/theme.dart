@@ -252,9 +252,45 @@ class AppTheme {
     ),
   );
 
+  static void changeStatusBar<T extends ThemeClass>(
+      [SystemUiOverlayStyle? style]) {
+    if (T == Light) {
+      return SystemChrome.setSystemUIOverlayStyle(
+        style != null
+            ? style.copyWith(
+                systemNavigationBarIconBrightness: Brightness.dark,
+                statusBarIconBrightness: Brightness.light,
+                statusBarBrightness: Brightness.dark,
+              )
+            : SystemUiOverlayStyle.light.copyWith(
+                statusBarColor: Colors.transparent,
+              ),
+      );
+    } else if (T == Dark) {
+      return SystemChrome.setSystemUIOverlayStyle(
+        style != null
+            ? style.copyWith(
+                systemNavigationBarIconBrightness: Brightness.light,
+                statusBarIconBrightness: Brightness.dark,
+                statusBarBrightness: Brightness.light,
+              )
+            : SystemUiOverlayStyle.dark.copyWith(
+                statusBarColor: Colors.transparent,
+              ),
+      );
+    }
+
+    return SystemChrome.setSystemUIOverlayStyle(
+      style ??
+          SystemUiOverlayStyle.dark.copyWith(
+            statusBarColor: Colors.transparent,
+          ),
+    );
+  }
+
   static void changeTheme([ThemeMode? theme]) {
     ILocalStorage storage = Get.find();
-    
+
     if (theme != null) {
       Get.changeThemeMode(theme);
       Settings.theme = theme;
@@ -267,7 +303,13 @@ class AppTheme {
         Settings.theme = ThemeMode.dark;
       }
     }
-    
+
     storage.add('theme', Settings.theme.index.toString());
   }
 }
+
+abstract class ThemeClass {}
+
+class Light extends ThemeClass {}
+
+class Dark extends ThemeClass {}

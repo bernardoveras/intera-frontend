@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:intera/shared/settings.dart';
+import 'package:intera/shared/theme/theme.dart';
 
 import 'data/services/local_storage_service.dart';
 import 'domain/services/local_storage_service.dart';
@@ -19,11 +21,9 @@ class Initializer {
   }
 
   static void _setStatusBar() {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle.dark.copyWith(
-        statusBarColor: Colors.transparent,
-      ),
-    );
+    Settings.theme == ThemeMode.light
+        ? AppTheme.changeStatusBar<Dark>()
+        : AppTheme.changeStatusBar<Light>();
   }
 
   static void _startLocalStorage() {
