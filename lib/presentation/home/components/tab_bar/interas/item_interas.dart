@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intera/domain/entities/intera.dart';
 import 'package:intera/shared/extensions/formatter_extension.dart';
+import 'package:intera/shared/settings.dart';
 import '../../../../../shared/extensions/screen_util_extension.dart';
 
 class ItemInteras extends StatelessWidget {
@@ -21,8 +22,16 @@ class ItemInteras extends StatelessWidget {
         return Container(
           height: 100.height,
           decoration: BoxDecoration(
-            color: Get.isDarkMode ? Colors.grey.withOpacity(.1) : Colors.grey.shade100,
+            color: Theme.of(context).cardColor,
             borderRadius: BorderRadius.circular(8.height),
+            boxShadow: Settings.theme == ThemeMode.light
+                ? [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.1),
+                      blurRadius: 5.0,
+                    ),
+                  ]
+                : null,
           ),
           child: Stack(
             alignment: Alignment.bottomLeft,
@@ -49,8 +58,11 @@ class ItemInteras extends StatelessWidget {
                     Row(
                       children: [
                         CircleAvatar(
-                          backgroundColor:
-                              Get.isDarkMode ? Colors.grey.withOpacity(.15)  :Theme.of(context).primaryColor.withOpacity(0.05),
+                          backgroundColor: Get.isDarkMode
+                              ? Colors.grey.withOpacity(.15)
+                              : Theme.of(context)
+                                  .primaryColor
+                                  .withOpacity(0.05),
                           child: Text(
                             '$index',
                             style: TextStyle(fontWeight: FontWeight.bold),
@@ -65,7 +77,9 @@ class ItemInteras extends StatelessWidget {
                               '${intera.title} - ${Formatter.currency(intera.total)}',
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
-                                color: Get.isDarkMode ? Colors.grey.shade200 : Colors.grey.shade700,
+                                color: Get.isDarkMode
+                                    ? Colors.grey.shade200
+                                    : Colors.grey.shade700,
                                 fontSize: 18.sp,
                               ),
                             ),
@@ -77,7 +91,9 @@ class ItemInteras extends StatelessWidget {
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   fontSize: 15.sp,
-                                  color: Get.isDarkMode ? Colors.grey.shade200 : Colors.grey,
+                                  color: Get.isDarkMode
+                                      ? Colors.grey.shade200
+                                      : Colors.grey,
                                 ),
                               ),
                             ),
@@ -87,7 +103,9 @@ class ItemInteras extends StatelessWidget {
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                 fontSize: 15.sp,
-                                color: Get.isDarkMode ? Colors.grey.shade200 : Colors.grey,
+                                color: Get.isDarkMode
+                                    ? Colors.grey.shade200
+                                    : Colors.grey,
                               ),
                             ),
                           ],
