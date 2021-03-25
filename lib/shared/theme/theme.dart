@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:intera/domain/services/local_storage_service.dart';
+import 'package:intera/shared/helpers/theme_helper.dart';
 import 'package:intera/shared/settings.dart';
 
 class AppTheme {
@@ -268,7 +269,7 @@ class AppTheme {
     ),
   );
 
-  static void changeStatusBar<T extends ThemeClass>(
+  static void changeStatusBar<T extends ThemeHelper>(
       [SystemUiOverlayStyle? style]) {
     if (T == Light) {
       return SystemChrome.setSystemUIOverlayStyle(
@@ -329,8 +330,3 @@ class AppTheme {
   }
 }
 
-abstract class ThemeClass {}
-
-class Light extends ThemeClass {}
-
-class Dark extends ThemeClass {}
