@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:intera/domain/entities/intera.dart';
+import 'package:intera/shared/extensions/formatter_extension.dart';
 import '../../../../../shared/extensions/screen_util_extension.dart';
 
 class ItemInteras extends StatelessWidget {
   final int index;
-  final String persons;
-  final String title;
+  final Intera intera;
 
-  const ItemInteras({Key? key, required this.index, required this.persons, required this.title}) : super(key: key);
+  const ItemInteras({Key? key, required this.index, required this.intera})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -31,7 +33,7 @@ class ItemInteras extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      title,
+                      '${intera.title} - ${Formatter.currency(intera.total)}',
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 18.sp,
@@ -40,11 +42,11 @@ class ItemInteras extends StatelessWidget {
                     Container(
                       width: 200.width,
                       child: Text(
-                        persons,
+                        intera.members.join(','),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          fontSize: 18.sp,
+                          fontSize: 15.sp,
                           color: Colors.grey,
                         ),
                       ),

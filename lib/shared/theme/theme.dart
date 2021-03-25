@@ -35,6 +35,18 @@ class AppTheme {
       accentColor: secondary,
       appBarTheme: _appBarTheme(context),
       textTheme: _textTheme(context),
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: primary,
+        elevation: 0,
+        hoverElevation: 0,
+        focusElevation: 0,
+        highlightElevation: 0,
+        disabledElevation: 0,
+        foregroundColor: Colors.white,
+        hoverColor:  Colors.transparent,
+        focusColor: Colors.transparent,
+        splashColor:  Colors.transparent,
+      ),
     );
   }
 
@@ -50,9 +62,20 @@ class AppTheme {
       backgroundColor: backgroundDark,
       appBarTheme: _appBarTheme(context),
       textTheme: _textTheme(context),
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: primary,
+        elevation: 0,
+        hoverElevation: 0,
+        focusElevation: 0,
+        highlightElevation: 0,
+        disabledElevation: 0,
+        foregroundColor: Colors.white,
+        hoverColor:  Colors.transparent,
+        focusColor: Colors.transparent,
+        splashColor:  Colors.transparent,
+      ),
     );
   }
-
 
   static AppBarTheme? _appBarTheme(BuildContext context) {
     return AppBarTheme(
