@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:intera/domain/services/local_storage_service.dart';
+import 'package:intera/shared/settings.dart';
 
 class AppTheme {
   /// Pallete of `Primary` color's
@@ -249,26 +252,22 @@ class AppTheme {
     ),
   );
 
-  // static AppBarTheme? _appBarTheme(BuildContext context) {
-  //   return AppBarTheme(
-  //     textTheme: Theme.of(context).textTheme.apply(
-  //           fontFamily: 'Circular',
-  //           bodyColor: Colors.white,
-  //           displayColor: Colors.white,
-  //           decoration: TextDecoration.none,
-  //         ),
-  //     brightness: Brightness.dark,
-  //     color: primary,
-  //     foregroundColor: Colors.white,
-  //     elevation: 0,
-  //     centerTitle: true,
-  //   );
-  // }
-
-  // static TextTheme _textTheme(BuildContext context) {
-  //   return Theme.of(context).textTheme.apply(
-  //         fontFamily: 'Circular',
-  //         decoration: TextDecoration.none,
-  //       );
-  // }
+  static void changeTheme([ThemeMode? theme]) {
+    ILocalStorage storage = Get.find();
+    
+    if (theme != null) {
+      Get.changeThemeMode(theme);
+      Settings.theme = theme;
+    } else {
+      if (Get.isDarkMode) {
+        Get.changeThemeMode(ThemeMode.light);
+        Settings.theme = ThemeMode.light;
+      } else {
+        Get.changeThemeMode(ThemeMode.dark);
+        Settings.theme = ThemeMode.dark;
+      }
+    }
+    
+    storage.add('theme', Settings.theme.index.toString());
+  }
 }
