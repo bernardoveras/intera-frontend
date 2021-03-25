@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:intera/shared/settings.dart';
+import 'package:intera/shared/theme/theme.dart';
 import '../../shared/extensions/screen_util_extension.dart';
-import '../mixins/theme_mixin.dart';
 
 class MaterialBottomSheet extends StatefulWidget {
   @override
   _MaterialBottomSheetState createState() => _MaterialBottomSheetState();
 }
 
-class _MaterialBottomSheetState extends State<MaterialBottomSheet>
-    with ThemeMixin {
+class _MaterialBottomSheetState extends State<MaterialBottomSheet> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -45,14 +44,13 @@ class _MaterialBottomSheetState extends State<MaterialBottomSheet>
                 Item(
                   title: 'Dark mode',
                   isChecked: Settings.theme == ThemeMode.dark ? true : false,
-                  onTap: () {
-                    setState(() {
-                      changeTheme(
-                        Settings.theme == ThemeMode.light
-                            ? ThemeMode.dark
-                            : ThemeMode.light,
-                      );
-                    });
+                  onTap: () async {
+                    await AppTheme.changeTheme(
+                      Settings.theme == ThemeMode.light
+                          ? ThemeMode.dark
+                          : ThemeMode.light,
+                    );
+                    setState(() {});
                   },
                 ),
               ],

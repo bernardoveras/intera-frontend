@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:intera/domain/services/local_storage_service.dart';
+import 'package:intera/shared/settings.dart';
 
 class AppTheme {
   /// Pallete of `Primary` color's
@@ -36,7 +39,15 @@ class AppTheme {
     accentColorBrightness: Brightness.light,
     backgroundColor: background,
     buttonColor: primary,
-    floatingActionButtonTheme: FloatingActionButtonThemeData(),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: primary,
+      elevation: 0,
+      focusElevation: 1,
+      focusColor: Colors.transparent,
+      hoverColor: Colors.transparent,
+      splashColor: Colors.transparent,
+      foregroundColor: Colors.white,
+    ),
     accentColor: primary,
     splashColor: primary,
     scaffoldBackgroundColor: background,
@@ -142,7 +153,15 @@ class AppTheme {
     backgroundColor: backgroundDark,
     buttonColor: primary,
     dividerColor: Colors.white30,
-    floatingActionButtonTheme: FloatingActionButtonThemeData(),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: primary,
+      elevation: 0,
+      focusElevation: 1,
+      focusColor: Colors.transparent,
+      hoverColor: Colors.transparent,
+      splashColor: Colors.transparent,
+      foregroundColor: Colors.white,
+    ),
     accentColor: primary,
     splashColor: primary,
     scaffoldBackgroundColor: backgroundDark,
@@ -249,26 +268,69 @@ class AppTheme {
     ),
   );
 
-  // static AppBarTheme? _appBarTheme(BuildContext context) {
-  //   return AppBarTheme(
-  //     textTheme: Theme.of(context).textTheme.apply(
-  //           fontFamily: 'Circular',
-  //           bodyColor: Colors.white,
-  //           displayColor: Colors.white,
-  //           decoration: TextDecoration.none,
-  //         ),
-  //     brightness: Brightness.dark,
-  //     color: primary,
-  //     foregroundColor: Colors.white,
-  //     elevation: 0,
-  //     centerTitle: true,
-  //   );
-  // }
+  static void changeStatusBar<T extends ThemeClass>(
+      [SystemUiOverlayStyle? style]) {
+    if (T == Light) {
+      return SystemChrome.setSystemUIOverlayStyle(
+        style != null
+            ? style.copyWith(
+                systemNavigationBarIconBrightness: Brightness.dark,
+                statusBarIconBrightness: Brightness.light,
+                statusBarBrightness: Brightness.dark,
+              )
+            : SystemUiOverlayStyle.light.copyWith(
+                statusBarColor: Colors.transparent,
+              ),
+      );
+    } else if (T == Dark) {
+      return SystemChrome.setSystemUIOverlayStyle(
+        style != null
+            ? style.copyWith(
+                systemNavigationBarIconBrightness: Brightness.light,
+                statusBarIconBrightness: Brightness.dark,
+                statusBarBrightness: Brightness.light,
+              )
+            : SystemUiOverlayStyle.dark.copyWith(
+                statusBarColor: Colors.transparent,
+              ),
+      );
+    }
 
-  // static TextTheme _textTheme(BuildContext context) {
-  //   return Theme.of(context).textTheme.apply(
-  //         fontFamily: 'Circular',
-  //         decoration: TextDecoration.none,
-  //       );
-  // }
+    return SystemChrome.setSystemUIOverlayStyle(
+      style ??
+          SystemUiOverlayStyle.dark.copyWith(
+            statusBarColor: Colors.transparent,
+          ),
+    );
+  }
+
+  static Future<void> changeTheme([ThemeMode? theme]) async {
+    ILocalStorage storage = Get.find();
+
+    if (theme != null) {
+      Get.changeThemeMode(theme);
+      Settings.theme = theme;
+      theme == ThemeMode.light
+          ? AppTheme.changeStatusBar<Dark>()
+          : AppTheme.changeStatusBar<Light>();
+    } else {
+      if (Get.isDarkMode) {
+        Get.changeThemeMode(ThemeMode.light);
+        Settings.theme = ThemeMode.light;
+        AppTheme.changeStatusBar<Dark>();
+      } else {
+        Get.changeThemeMode(ThemeMode.dark);
+        Settings.theme = ThemeMode.dark;
+        AppTheme.changeStatusBar<Light>();
+      }
+    }
+
+    await storage.add('theme', Settings.theme.index.toString());
+  }
 }
+
+abstract class ThemeClass {}
+
+class Light extends ThemeClass {}
+
+class Dark extends ThemeClass {}
