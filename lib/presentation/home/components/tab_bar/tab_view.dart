@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intera/domain/entities/intera.dart';
-import '../../../../shared/extensions/screen_util_extension.dart';
 import 'interas/tab_interas.dart';
 
 class TabViewComponent extends StatelessWidget {

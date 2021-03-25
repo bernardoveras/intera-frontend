@@ -2,6 +2,7 @@
     package="com.example.intera">
    <application
         android:label="Intera"
+        android:requestLegacyExternalStorage="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

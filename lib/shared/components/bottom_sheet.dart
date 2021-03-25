@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:intera/shared/settings.dart';
-import 'package:intera/shared/theme/theme.dart';
 import '../../shared/extensions/screen_util_extension.dart';
 
 class MaterialBottomSheet extends StatefulWidget {
+  final List<Widget>? itens;
+
+  const MaterialBottomSheet({Key? key, this.itens}) : super(key: key);
   @override
   _MaterialBottomSheetState createState() => _MaterialBottomSheetState();
 }
@@ -16,8 +17,8 @@ class _MaterialBottomSheetState extends State<MaterialBottomSheet> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20.height),
-          topRight: Radius.circular(20.height),
+          topLeft: Radius.circular(20.radius),
+          topRight: Radius.circular(20.radius),
         ),
       ),
       child: Stack(
@@ -29,7 +30,7 @@ class _MaterialBottomSheetState extends State<MaterialBottomSheet> {
               height: 5,
               decoration: BoxDecoration(
                 color: Colors.grey.shade400,
-                borderRadius: BorderRadius.circular(50.height),
+                borderRadius: BorderRadius.circular(50.radius),
               ),
               width: 80,
             ),
@@ -40,20 +41,7 @@ class _MaterialBottomSheetState extends State<MaterialBottomSheet> {
             width: MediaQuery.of(context).size.width - 50,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Item(
-                  title: 'Dark mode',
-                  isChecked: Settings.theme == ThemeMode.dark ? true : false,
-                  onTap: () async {
-                    await AppTheme.changeTheme(
-                      Settings.theme == ThemeMode.light
-                          ? ThemeMode.dark
-                          : ThemeMode.light,
-                    );
-                    setState(() {});
-                  },
-                ),
-              ],
+              children: widget.itens ?? [],
             ),
           ),
         ],
@@ -75,40 +63,53 @@ class Item extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       behavior: HitTestBehavior.opaque,
-      child: Container(
-        height: 50.height,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'Dark mode',
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                color: Colors.black,
-              ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            height: 50.height,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Dark mode',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black,
+                  ),
+                ),
+                SizedBox(
+                  height: 24.height,
+                  width: 24.width,
+                  child: Checkbox(
+                    value: isChecked,
+                    checkColor: Colors.white,
+                    overlayColor: MaterialStateProperty.all<Color>(
+                      Colors.transparent,
+                    ),
+                    fillColor: MaterialStateProperty.all<Color>(
+                      Theme.of(context).primaryColor,
+                    ),
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    onChanged: onTap != null
+                        ? (val) {
+                            onTap!();
+                          }
+                        : null,
+                  ),
+                )
+              ],
             ),
-            SizedBox(
-              height: 24.height,
-              width: 24.width,
-              child: Checkbox(
-                value: isChecked,
-                checkColor: Colors.white,
-                overlayColor: MaterialStateProperty.all<Color>(
-                  Colors.transparent,
-                ),
-                fillColor: MaterialStateProperty.all<Color>(
-                  Theme.of(context).primaryColor,
-                ),
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                onChanged: onTap != null
-                    ? (val) {
-                        onTap!();
-                      }
-                    : null,
-              ),
-            )
-          ],
-        ),
+          ),
+          Container(
+            height: 2,
+            decoration: BoxDecoration(
+              color: Colors.grey.shade200,
+              borderRadius: BorderRadius.circular(100.radius),
+            ),
+          ),
+        ],
       ),
     );
   }

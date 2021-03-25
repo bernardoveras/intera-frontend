@@ -10,7 +10,5 @@ class HomeController extends GetxController {
       members: ['Bernardo', 'Juan', 'Brenda', 'VT', 'Alafe', 'Pedro', 'PH'],
       total: 200,
     ),
-  ];
-
-  
+  ];  
 }

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:intera/domain/services/local_storage_service.dart';
+import 'package:intera/shared/consts.dart';
+import 'package:intera/shared/helpers/theme_helper.dart';
 import 'package:intera/shared/settings.dart';
 
 class AppTheme {
@@ -62,76 +64,91 @@ class AppTheme {
         fontSize: 96,
         fontWeight: FontWeight.w300,
         letterSpacing: -1.5,
+        decoration: TextDecoration.none,
       ),
       headline2: TextStyle(
         fontFamily: 'Circular',
         fontSize: 60,
         fontWeight: FontWeight.w300,
         letterSpacing: -0.5,
+        decoration: TextDecoration.none,
       ),
       headline3: TextStyle(
         fontFamily: 'Circular',
         fontSize: 48,
         fontWeight: FontWeight.w400,
         letterSpacing: 0,
+        decoration: TextDecoration.none,
       ),
       headline4: TextStyle(
         fontFamily: 'Circular',
         fontSize: 34,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.25,
+        decoration: TextDecoration.none,
       ),
       headline5: TextStyle(
         fontFamily: 'Circular',
         fontSize: 24,
         fontWeight: FontWeight.w400,
         letterSpacing: 0,
+        decoration: TextDecoration.none,
       ),
       headline6: TextStyle(
         fontFamily: 'Circular',
         fontSize: 20,
         fontWeight: FontWeight.w500,
         letterSpacing: 0.15,
+        decoration: TextDecoration.none,
       ),
       subtitle1: TextStyle(
-          fontFamily: 'Circular',
-          fontSize: 16,
-          fontWeight: FontWeight.w400,
-          letterSpacing: 0.15),
+        fontFamily: 'Circular',
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.15,
+        decoration: TextDecoration.none,
+      ),
       subtitle2: TextStyle(
         fontFamily: 'Circular',
         fontSize: 14,
         fontWeight: FontWeight.w500,
         letterSpacing: 0.1,
+        decoration: TextDecoration.none,
       ),
       bodyText1: TextStyle(
-          fontFamily: 'Circular',
-          fontSize: 16,
-          fontWeight: FontWeight.w400,
-          letterSpacing: 0.5),
+        fontFamily: 'Circular',
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.5,
+        decoration: TextDecoration.none,
+      ),
       bodyText2: TextStyle(
         fontFamily: 'Circular',
         fontSize: 14,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.25,
+        decoration: TextDecoration.none,
       ),
       button: TextStyle(
         fontFamily: 'Circular',
         fontSize: 14,
         fontWeight: FontWeight.w500,
         letterSpacing: 1.25,
+        decoration: TextDecoration.none,
       ),
       caption: TextStyle(
         fontFamily: 'Circular',
         fontSize: 12,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.4,
+        decoration: TextDecoration.none,
       ),
       overline: TextStyle(
         fontFamily: 'Circular',
         fontSize: 10,
         fontWeight: FontWeight.w400,
         letterSpacing: 1.5,
+        decoration: TextDecoration.none,
       ),
     ),
     buttonTheme: ButtonThemeData(),
@@ -177,6 +194,7 @@ class AppTheme {
         fontWeight: FontWeight.w300,
         letterSpacing: -1.5,
         color: Colors.white12,
+        decoration: TextDecoration.none,
       ),
       headline2: TextStyle(
         fontFamily: 'Circular',
@@ -184,6 +202,7 @@ class AppTheme {
         fontWeight: FontWeight.w300,
         letterSpacing: -0.5,
         color: Colors.white24,
+        decoration: TextDecoration.none,
       ),
       headline3: TextStyle(
         fontFamily: 'Circular',
@@ -191,6 +210,7 @@ class AppTheme {
         fontWeight: FontWeight.w400,
         letterSpacing: 0,
         color: Colors.white30,
+        decoration: TextDecoration.none,
       ),
       headline4: TextStyle(
         fontFamily: 'Circular',
@@ -198,6 +218,7 @@ class AppTheme {
         fontWeight: FontWeight.w400,
         letterSpacing: 0.25,
         color: Colors.white24,
+        decoration: TextDecoration.none,
       ),
       headline5: TextStyle(
         fontFamily: 'Circular',
@@ -205,6 +226,7 @@ class AppTheme {
         fontWeight: FontWeight.w400,
         letterSpacing: 0,
         color: Colors.white70,
+        decoration: TextDecoration.none,
       ),
       headline6: TextStyle(
         fontFamily: 'Circular',
@@ -212,6 +234,7 @@ class AppTheme {
         fontWeight: FontWeight.w500,
         letterSpacing: 0.15,
         color: Colors.white,
+        decoration: TextDecoration.none,
       ),
       subtitle1: TextStyle(
         fontFamily: 'Circular',
@@ -219,6 +242,7 @@ class AppTheme {
         fontWeight: FontWeight.w400,
         letterSpacing: 0.15,
         color: Colors.white,
+        decoration: TextDecoration.none,
       ),
       subtitle2: TextStyle(
         fontFamily: 'Circular',
@@ -226,6 +250,7 @@ class AppTheme {
         fontWeight: FontWeight.w500,
         letterSpacing: 0.1,
         color: Colors.white,
+        decoration: TextDecoration.none,
       ),
       bodyText1: TextStyle(
         fontFamily: 'Circular',
@@ -233,6 +258,7 @@ class AppTheme {
         fontWeight: FontWeight.w400,
         letterSpacing: 0.5,
         color: Colors.white,
+        decoration: TextDecoration.none,
       ),
       bodyText2: TextStyle(
         fontFamily: 'Circular',
@@ -240,6 +266,7 @@ class AppTheme {
         fontWeight: FontWeight.w400,
         letterSpacing: 0.25,
         color: Colors.white,
+        decoration: TextDecoration.none,
       ),
       button: TextStyle(
         fontFamily: 'Circular',
@@ -247,6 +274,7 @@ class AppTheme {
         fontWeight: FontWeight.w500,
         letterSpacing: 1.25,
         color: Colors.white,
+        decoration: TextDecoration.none,
       ),
       caption: TextStyle(
         fontFamily: 'Circular',
@@ -254,6 +282,7 @@ class AppTheme {
         fontWeight: FontWeight.w400,
         letterSpacing: 0.4,
         color: Colors.white30,
+        decoration: TextDecoration.none,
       ),
       overline: TextStyle(
         fontFamily: 'Circular',
@@ -261,6 +290,7 @@ class AppTheme {
         fontWeight: FontWeight.w400,
         letterSpacing: 1.5,
         color: Colors.white24,
+        decoration: TextDecoration.none,
       ),
     ),
     buttonTheme: ButtonThemeData(
@@ -268,7 +298,7 @@ class AppTheme {
     ),
   );
 
-  static void changeStatusBar<T extends ThemeClass>(
+  static void changeStatusBar<T extends ThemeHelper>(
       [SystemUiOverlayStyle? style]) {
     if (T == Light) {
       return SystemChrome.setSystemUIOverlayStyle(
@@ -309,28 +339,22 @@ class AppTheme {
 
     if (theme != null) {
       Get.changeThemeMode(theme);
-      Settings.theme = theme;
+      Settings.theme.value = theme;
       theme == ThemeMode.light
           ? AppTheme.changeStatusBar<Dark>()
           : AppTheme.changeStatusBar<Light>();
     } else {
       if (Get.isDarkMode) {
         Get.changeThemeMode(ThemeMode.light);
-        Settings.theme = ThemeMode.light;
+        Settings.theme.value = ThemeMode.light;
         AppTheme.changeStatusBar<Dark>();
       } else {
         Get.changeThemeMode(ThemeMode.dark);
-        Settings.theme = ThemeMode.dark;
+        Settings.theme.value = ThemeMode.dark;
         AppTheme.changeStatusBar<Light>();
       }
     }
 
-    await storage.add('theme', Settings.theme.index.toString());
+    await storage.add(PATH.THEME, Settings.theme.value!.index.toString());
   }
 }
-
-abstract class ThemeClass {}
-
-class Light extends ThemeClass {}
-
-class Dark extends ThemeClass {}

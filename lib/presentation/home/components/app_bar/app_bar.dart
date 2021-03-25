@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/state_manager.dart';
 import 'package:intera/shared/settings.dart';
 import '../../../../shared/extensions/screen_util_extension.dart';
 import 'components.dart';
@@ -16,7 +17,8 @@ class HomeAppBar extends PreferredSize {
                 children: [
                   Row(
                     children: [
-                      ProfilePicture(url: Settings.usernameImage),
+                      Obx(() =>
+                          ProfilePicture(image: Settings.usernameImage?.value)),
                       SizedBox(width: 20.width),
                       ProfileName(profileName: Settings.username),
                     ],

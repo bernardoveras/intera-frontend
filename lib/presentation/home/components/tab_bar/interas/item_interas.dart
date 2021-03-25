@@ -23,8 +23,8 @@ class ItemInteras extends StatelessWidget {
           height: 100.height,
           decoration: BoxDecoration(
             color: Theme.of(context).cardColor,
-            borderRadius: BorderRadius.circular(8.height),
-            boxShadow: Settings.theme == ThemeMode.light
+            borderRadius: BorderRadius.circular(8.radius),
+            boxShadow: Settings.theme.value == ThemeMode.light
                 ? [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.1),
@@ -42,11 +42,11 @@ class ItemInteras extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Theme.of(context).primaryColor,
                   borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(8.height),
+                    bottomLeft: Radius.circular(8.radius),
                     topLeft: Radius.zero,
                     bottomRight: intera.progress < 100
                         ? Radius.zero
-                        : Radius.circular(8.height),
+                        : Radius.circular(8.radius),
                   ),
                 ),
               ),
