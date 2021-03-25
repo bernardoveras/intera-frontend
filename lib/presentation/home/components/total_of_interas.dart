@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:intera/shared/extensions/formatter_extension.dart';
+import 'package:intera/shared/settings.dart';
 import '../../../shared/extensions/screen_util_extension.dart';
 
 class TotalOfInteras extends StatefulWidget {
@@ -61,6 +62,8 @@ class _TotalOfInterasState extends State<TotalOfInteras> {
                             Duration(milliseconds: 550),
                             () {
                               setState(() {
+                                Settings.exibirTotalDeInteras.value =
+                                    isVisible;
                                 _isVisibleDefinitive = isVisible;
                               });
                             },

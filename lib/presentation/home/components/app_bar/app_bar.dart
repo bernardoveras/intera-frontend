@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/state_manager.dart';
+import 'package:get/get.dart';
+
 import 'package:intera/shared/settings.dart';
 import '../../../../shared/extensions/screen_util_extension.dart';
 import 'components.dart';
@@ -23,7 +24,10 @@ class HomeAppBar extends PreferredSize {
                       ProfileName(profileName: Settings.username),
                     ],
                   ),
-                  NotificationRow(hasNotification: false),
+                  NotificationRow(
+                    hasNotification: false,
+                    storage: Get.find(),
+                  ),
                 ],
               ),
             ),

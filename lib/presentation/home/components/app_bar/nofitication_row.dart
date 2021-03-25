@@ -1,16 +1,20 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intera/domain/services/local_storage_service.dart';
 import 'package:intera/shared/components/bottom_sheet.dart';
+import 'package:intera/shared/consts.dart';
 import 'package:intera/shared/settings.dart';
 import 'package:intera/shared/theme/theme.dart';
 import '../../../../shared/extensions/screen_util_extension.dart';
 
 class NotificationRow extends StatelessWidget {
   final bool hasNotification;
+  final ILocalStorage storage;
 
   const NotificationRow({
     Key? key,
+    required this.storage,
     this.hasNotification = false,
   }) : super(key: key);
 
@@ -54,10 +58,24 @@ class NotificationRow extends StatelessWidget {
                         },
                       ),
                     ),
+                    Obx(
+                      () => Item(
+                        title: 'Exibir total das interas',
+                        isChecked:
+                            Settings.exibirTotalDeInteras.value ?? false,
+                        onTap: () async {
+                          Settings.exibirTotalDeInteras.value =
+                              !Settings.exibirTotalDeInteras.value!;
+                          await storage.add(
+                            PATH.EXIBIR_TOTAL_INTERAS,
+                            Settings.exibirTotalDeInteras.value.toString(),
+                          );
+                        },
+                      ),
+                    ),
                   ],
                 ),
               );
-              print('Tap Menu');
             },
           ),
           IconButton(
