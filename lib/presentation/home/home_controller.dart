@@ -11,4 +11,6 @@ class HomeController extends GetxController {
       total: 200,
     ),
   ];
+
+  
 }
