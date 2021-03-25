@@ -73,7 +73,7 @@ class Item extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Dark mode',
+                  title,
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     color: Colors.black,

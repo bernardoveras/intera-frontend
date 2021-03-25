@@ -74,7 +74,7 @@ class ItemInteras extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              '${intera.title} - ${Formatter.currency(intera.total)}',
+                              '${intera.title}',
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 color: Get.isDarkMode

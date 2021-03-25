@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "974233198712",
+    "project_id": "intera-application",
+    "storage_bucket": "intera-application.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974233198712:android:a9f8ccb6ffb886a9ef4d8d",
+        "android_client_info": {
+          "package_name": "br.com.veras.intera"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "974233198712-6g309drc1knlqqd9jg5gcv9foe1f1ofm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpoSJzJPXv8ILj6EUYo7SUSumNk-moktY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "974233198712-6g309drc1knlqqd9jg5gcv9foe1f1ofm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

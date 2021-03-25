@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'dart:isolate';
 import 'dart:typed_data';
-
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:intera/shared/helpers/theme_helper.dart';
 import 'shared/consts.dart';
@@ -9,25 +11,47 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intera/shared/settings.dart';
 import 'package:intera/shared/theme/theme.dart';
-
+import 'shared/extensions/shared_extensions.dart';
 import 'data/services/local_storage_service.dart';
 import 'domain/services/local_storage_service.dart';
+import 'package:flutter/foundation.dart' show kDebugMode;
 
 class Initializer {
   static Future<void> init() async {
     try {
       WidgetsFlutterBinding.ensureInitialized();
+      await _startFirebase();
+      await _startFirebaseCrashlytics();
       await _startLocalStorage();
       await _startTheme();
-      await _startUserSettings();
+      await _startAllSettings();
     } catch (e) {
       print(e);
       rethrow;
     }
   }
 
-  static Future<void> _startUserSettings() async {
-    ILocalStorage storage = Get.find();
+  static Future<void> _startFirebase() async {
+    await Firebase.initializeApp();
+  }
+
+  static Future<void> _startFirebaseCrashlytics() async {
+    if (kDebugMode) {
+      await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+    }
+
+    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
+
+    Isolate.current.addErrorListener(RawReceivePort((pair) async {
+      final List<dynamic> errorAndStacktrace = pair;
+      await FirebaseCrashlytics.instance.recordError(
+        errorAndStacktrace.first,
+        errorAndStacktrace.last,
+      );
+    }).sendPort);
+  }
+
+  static Future<void> _startUserSettings(ILocalStorage storage) async {
     String? imageBase64 = await storage.get(PATH.USER_IMAGE);
 
     Uint8List? imageDecoded =
@@ -35,6 +59,18 @@ class Initializer {
 
     if (imageDecoded != null) {
       Settings.usernameImage?.value = imageDecoded;
+    }
+  }
+
+  static Future<void> _startAllSettings() async {
+    ILocalStorage storage = Get.find();
+
+    await _startUserSettings(storage);
+
+    String? exibirTotalDeInteras = await storage.get(PATH.EXIBIR_TOTAL_INTERAS);
+
+    if (exibirTotalDeInteras != null) {
+      Settings.exibirTotalDeInteras.value = exibirTotalDeInteras.toBool;
     }
   }
 
@@ -54,7 +90,9 @@ class Initializer {
 
   static Future<void> _startLocalStorage() async {
     await GetStorage.init();
-    Get.lazyPut<ILocalStorage>(() => LocalStorageService(GetStorage()),
-        fenix: true);
+    Get.lazyPut<ILocalStorage>(
+      () => LocalStorageService(GetStorage()),
+      fenix: true,
+    );
   }
 }
