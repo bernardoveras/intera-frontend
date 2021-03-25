@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil_init.dart';
 import 'package:get/get.dart';
+import 'package:intera/shared/settings.dart';
 import 'shared/theme/theme.dart';
 import 'shared/navigation/navigation.dart';
 
@@ -21,6 +22,7 @@ class App extends StatelessWidget {
           getPages: Navigation.routes,
           theme: AppTheme.light,
           darkTheme: AppTheme.dark,
+          themeMode: Settings.theme,
           builder: (context, child) => GestureDetector(
             onTap: () {
               FocusManager.instance.primaryFocus?.unfocus();
