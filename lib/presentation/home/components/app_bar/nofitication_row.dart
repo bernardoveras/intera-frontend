@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../../shared/extensions/screen_util_extension.dart';
 
 class NotificationRow extends StatelessWidget {
@@ -27,7 +28,7 @@ class NotificationRow extends StatelessWidget {
             icon: Icon(
               Icons.more_horiz,
               size: 34.height,
-              color: Colors.grey,
+              color: Get.isDarkMode ? Colors.white : Colors.grey,
             ),
             onPressed: () {
               print('Tap Menu');

@@ -32,6 +32,7 @@ class _TotalOfInterasState extends State<TotalOfInteras> {
                 key: widget.key,
                 height: 100.height,
                 width: MediaQuery.of(context).size.width,
+                margin: EdgeInsets.only(bottom: 20.height),
                 decoration: BoxDecoration(
                   color: Theme.of(context).primaryColor,
                   borderRadius: BorderRadius.circular(8.radius),

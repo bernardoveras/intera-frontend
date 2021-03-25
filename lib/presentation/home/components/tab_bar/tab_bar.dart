@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../../shared/extensions/screen_util_extension.dart';
 
 class TabBarComponent extends StatelessWidget {
@@ -8,7 +9,7 @@ class TabBarComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 5.width, top: 20.height),
+      padding: EdgeInsets.only(left: 5.width),
       child: TabBar(
         indicatorWeight: 2,
         physics: BouncingScrollPhysics(),
@@ -16,7 +17,7 @@ class TabBarComponent extends StatelessWidget {
         labelPadding: EdgeInsets.only(right: 15.width, left: 15.width),
         labelColor: Theme.of(context).primaryColor,
         indicatorColor: Theme.of(context).primaryColor,
-        unselectedLabelColor: Colors.grey,
+        unselectedLabelColor: Get.isDarkMode ? Colors.grey.shade500 : Colors.grey,
         indicatorSize: TabBarIndicatorSize.label,
         isScrollable: true,
         labelStyle: TextStyle(

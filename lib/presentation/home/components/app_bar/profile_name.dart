@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../../shared/extensions/screen_util_extension.dart';
 
 class ProfileName extends StatelessWidget {
@@ -20,7 +21,7 @@ class ProfileName extends StatelessWidget {
           Text(
             'WELCOME',
             style: TextStyle(
-              color: Colors.grey,
+              color: Get.isDarkMode ? Colors.white : Colors.grey,
               fontWeight: FontWeight.bold,
               fontSize: 14.sp,
             ),

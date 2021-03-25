@@ -20,7 +20,7 @@ class AppTheme {
 
   /// Other color's
   static Color background = Color(0xFFFAFAFC);
-  static Color backgroundDark = Color(0xFF121214);
+  static Color backgroundDark = Color(0xFF17191F);
 
   /// Init `theme light data` from application
   static ThemeData light(BuildContext context) {

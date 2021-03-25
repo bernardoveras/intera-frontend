@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intera/domain/entities/intera.dart';
 import 'package:intera/shared/extensions/formatter_extension.dart';
 import '../../../../../shared/extensions/screen_util_extension.dart';
@@ -18,9 +19,9 @@ class ItemInteras extends StatelessWidget {
       ),
       child: LayoutBuilder(builder: (context, sizes) {
         return Container(
-          height: 90.height,
+          height: 100.height,
           decoration: BoxDecoration(
-            color: Colors.grey.shade100,
+            color: Get.isDarkMode ? Colors.grey.withOpacity(.1) : Colors.grey.shade100,
             borderRadius: BorderRadius.circular(8.height),
           ),
           child: Stack(
@@ -49,7 +50,7 @@ class ItemInteras extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           backgroundColor:
-                              Theme.of(context).primaryColor.withOpacity(0.05),
+                              Get.isDarkMode ? Colors.grey.withOpacity(.15)  :Theme.of(context).primaryColor.withOpacity(0.05),
                           child: Text(
                             '$index',
                             style: TextStyle(fontWeight: FontWeight.bold),
@@ -64,7 +65,7 @@ class ItemInteras extends StatelessWidget {
                               '${intera.title} - ${Formatter.currency(intera.total)}',
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
-                                color: Colors.grey.shade700,
+                                color: Get.isDarkMode ? Colors.grey.shade200 : Colors.grey.shade700,
                                 fontSize: 18.sp,
                               ),
                             ),
@@ -76,7 +77,7 @@ class ItemInteras extends StatelessWidget {
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   fontSize: 15.sp,
-                                  color: Colors.grey,
+                                  color: Get.isDarkMode ? Colors.grey.shade200 : Colors.grey,
                                 ),
                               ),
                             ),
@@ -86,7 +87,7 @@ class ItemInteras extends StatelessWidget {
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                 fontSize: 15.sp,
-                                color: Colors.grey,
+                                color: Get.isDarkMode ? Colors.grey.shade200 : Colors.grey,
                               ),
                             ),
                           ],
