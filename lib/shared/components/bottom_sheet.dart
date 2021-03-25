@@ -44,14 +44,13 @@ class _MaterialBottomSheetState extends State<MaterialBottomSheet> {
                 Item(
                   title: 'Dark mode',
                   isChecked: Settings.theme == ThemeMode.dark ? true : false,
-                  onTap: () {
-                    setState(() {
-                      AppTheme.changeTheme(
-                        Settings.theme == ThemeMode.light
-                            ? ThemeMode.dark
-                            : ThemeMode.light,
-                      );
-                    });
+                  onTap: () async {
+                    await AppTheme.changeTheme(
+                      Settings.theme == ThemeMode.light
+                          ? ThemeMode.dark
+                          : ThemeMode.light,
+                    );
+                    setState(() {});
                   },
                 ),
               ],

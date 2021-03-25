@@ -39,7 +39,15 @@ class AppTheme {
     accentColorBrightness: Brightness.light,
     backgroundColor: background,
     buttonColor: primary,
-    floatingActionButtonTheme: FloatingActionButtonThemeData(),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: primary,
+      elevation: 0,
+      focusElevation: 1,
+      focusColor: Colors.transparent,
+      hoverColor: Colors.transparent,
+      splashColor: Colors.transparent,
+      foregroundColor: Colors.white,
+    ),
     accentColor: primary,
     splashColor: primary,
     scaffoldBackgroundColor: background,
@@ -145,7 +153,15 @@ class AppTheme {
     backgroundColor: backgroundDark,
     buttonColor: primary,
     dividerColor: Colors.white30,
-    floatingActionButtonTheme: FloatingActionButtonThemeData(),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: primary,
+      elevation: 0,
+      focusElevation: 1,
+      focusColor: Colors.transparent,
+      hoverColor: Colors.transparent,
+      splashColor: Colors.transparent,
+      foregroundColor: Colors.white,
+    ),
     accentColor: primary,
     splashColor: primary,
     scaffoldBackgroundColor: backgroundDark,
@@ -288,23 +304,28 @@ class AppTheme {
     );
   }
 
-  static void changeTheme([ThemeMode? theme]) {
+  static Future<void> changeTheme([ThemeMode? theme]) async {
     ILocalStorage storage = Get.find();
 
     if (theme != null) {
       Get.changeThemeMode(theme);
       Settings.theme = theme;
+      theme == ThemeMode.light
+          ? AppTheme.changeStatusBar<Dark>()
+          : AppTheme.changeStatusBar<Light>();
     } else {
       if (Get.isDarkMode) {
         Get.changeThemeMode(ThemeMode.light);
         Settings.theme = ThemeMode.light;
+        AppTheme.changeStatusBar<Dark>();
       } else {
         Get.changeThemeMode(ThemeMode.dark);
         Settings.theme = ThemeMode.dark;
+        AppTheme.changeStatusBar<Light>();
       }
     }
 
-    storage.add('theme', Settings.theme.index.toString());
+    await storage.add('theme', Settings.theme.index.toString());
   }
 }
 
