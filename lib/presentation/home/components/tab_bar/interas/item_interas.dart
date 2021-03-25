@@ -42,7 +42,7 @@ class ItemInteras extends StatelessWidget {
                     Container(
                       width: 200.width,
                       child: Text(
-                        intera.members.join(','),
+                        intera.members.join(', '),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
