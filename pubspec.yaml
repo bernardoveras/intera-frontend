@@ -17,6 +17,8 @@ dependencies:
   animate_do: ^2.0.0
   # Package para Formatações de textos
   intl: ^0.17.0
+  # Package para imagens da internet com loading
+  cached_network_image: ^3.0.0-nullsafety
   flutter:
     sdk: flutter
 

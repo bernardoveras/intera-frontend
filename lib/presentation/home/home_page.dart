@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:intera/presentation/home/home_controller.dart';
 import '../../shared/extensions/screen_util_extension.dart';
 import 'components/components.dart';
 import 'components/tab_bar/tab_bar.dart';
@@ -12,6 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
+  final HomeController controller = Get.find();
 
   @override
   void initState() {
@@ -23,6 +26,10 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: HomeAppBar(),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {},
+      ),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,12 +42,15 @@ class _HomePageState extends State<HomePage>
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TotalOfInteras(total: 10),
+                  TotalOfInteras(total: controller.totalDasInteras),
                 ],
               ),
             ),
             TabBarComponent(tabController),
-            TabViewComponent(tabController: tabController),
+            TabViewComponent(
+              tabController: tabController,
+              interas: controller.interas,
+            ),
           ],
         ),
       ),
