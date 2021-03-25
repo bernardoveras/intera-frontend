@@ -27,10 +27,10 @@ class Initializer {
     int? theme = int.tryParse(await storage.get('theme') ?? 'null');
 
     if (theme != null) {
-      Settings.theme = theme.toThemeMode;
+      Settings.theme.value = theme.toThemeMode;
     }
 
-    Settings.theme == ThemeMode.light
+    Settings.theme.value == ThemeMode.light
         ? AppTheme.changeStatusBar<Dark>()
         : AppTheme.changeStatusBar<Light>();
   }

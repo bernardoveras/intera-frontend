@@ -1,14 +1,19 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intera/presentation/home/home_controller.dart';
 import 'package:intera/shared/components/bottom_sheet.dart';
+import 'package:intera/shared/settings.dart';
+import 'package:intera/shared/theme/theme.dart';
 import '../../../../shared/extensions/screen_util_extension.dart';
 
 class NotificationRow extends StatelessWidget {
   final bool hasNotification;
 
-  const NotificationRow({Key? key, this.hasNotification = false})
-      : super(key: key);
+  const NotificationRow({
+    Key? key,
+    this.hasNotification = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +38,25 @@ class NotificationRow extends StatelessWidget {
             ),
             onPressed: () {
               Get.bottomSheet(
-                MaterialBottomSheet(),
+                MaterialBottomSheet(
+                  itens: [
+                    Obx(
+                      () => Item(
+                        title: 'Dark mode',
+                        isChecked: Settings.theme.value == ThemeMode.dark
+                            ? true
+                            : false,
+                        onTap: () async {
+                          await AppTheme.changeTheme(
+                            Settings.theme.value == ThemeMode.light
+                                ? ThemeMode.dark
+                                : ThemeMode.light,
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               );
               print('Tap Menu');
             },

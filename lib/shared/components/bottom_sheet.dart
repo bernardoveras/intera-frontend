@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:intera/shared/settings.dart';
-import 'package:intera/shared/theme/theme.dart';
 import '../../shared/extensions/screen_util_extension.dart';
 
 class MaterialBottomSheet extends StatefulWidget {
+  final List<Widget>? itens;
+
+  const MaterialBottomSheet({Key? key, this.itens}) : super(key: key);
   @override
   _MaterialBottomSheetState createState() => _MaterialBottomSheetState();
 }
@@ -40,20 +41,7 @@ class _MaterialBottomSheetState extends State<MaterialBottomSheet> {
             width: MediaQuery.of(context).size.width - 50,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Item(
-                  title: 'Dark mode',
-                  isChecked: Settings.theme == ThemeMode.dark ? true : false,
-                  onTap: () async {
-                    await AppTheme.changeTheme(
-                      Settings.theme == ThemeMode.light
-                          ? ThemeMode.dark
-                          : ThemeMode.light,
-                    );
-                    setState(() {});
-                  },
-                ),
-              ],
+              children: widget.itens ?? [],
             ),
           ),
         ],

@@ -310,23 +310,23 @@ class AppTheme {
 
     if (theme != null) {
       Get.changeThemeMode(theme);
-      Settings.theme = theme;
+      Settings.theme.value = theme;
       theme == ThemeMode.light
           ? AppTheme.changeStatusBar<Dark>()
           : AppTheme.changeStatusBar<Light>();
     } else {
       if (Get.isDarkMode) {
         Get.changeThemeMode(ThemeMode.light);
-        Settings.theme = ThemeMode.light;
+        Settings.theme.value = ThemeMode.light;
         AppTheme.changeStatusBar<Dark>();
       } else {
         Get.changeThemeMode(ThemeMode.dark);
-        Settings.theme = ThemeMode.dark;
+        Settings.theme.value = ThemeMode.dark;
         AppTheme.changeStatusBar<Light>();
       }
     }
 
-    await storage.add('theme', Settings.theme.index.toString());
+    await storage.add('theme', Settings.theme.value!.index.toString());
   }
 }
 
