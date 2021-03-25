@@ -1,7 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intera/presentation/home/home_controller.dart';
 import 'package:intera/shared/components/bottom_sheet.dart';
 import 'package:intera/shared/settings.dart';
 import 'package:intera/shared/theme/theme.dart';

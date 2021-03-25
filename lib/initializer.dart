@@ -1,5 +1,9 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:intera/shared/helpers/theme_helper.dart';
+import 'shared/consts.dart';
 import 'shared/extensions/int_extensions.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -14,17 +18,30 @@ class Initializer {
     try {
       WidgetsFlutterBinding.ensureInitialized();
       await _startLocalStorage();
-      _startTheme();
+      await _startTheme();
+      await _startUserSettings();
     } catch (e) {
       print(e);
       rethrow;
     }
   }
 
-  static void _startTheme() async {
+  static Future<void> _startUserSettings() async {
+    ILocalStorage storage = Get.find();
+    String? imageBase64 = await storage.get(PATH.USER_IMAGE);
+
+    Uint8List? imageDecoded =
+        imageBase64 != null ? base64Decode(imageBase64) : null;
+
+    if (imageDecoded != null) {
+      Settings.usernameImage?.value = imageDecoded;
+    }
+  }
+
+  static Future<void> _startTheme() async {
     ILocalStorage storage = Get.find();
 
-    int? theme = int.tryParse(await storage.get('theme') ?? 'null');
+    int? theme = int.tryParse(await storage.get(PATH.THEME) ?? 'null');
 
     if (theme != null) {
       Settings.theme.value = theme.toThemeMode;

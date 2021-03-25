@@ -17,8 +17,8 @@ dependencies:
   animate_do: ^2.0.0
   # Package para Formatações de textos
   intl: ^0.17.0
-  # Package para imagens da internet com loading
-  cached_network_image: ^3.0.0-nullsafety
+  # Package para obter imagens da galeria
+  image_picker: ^0.7.3
   flutter:
     sdk: flutter
 
