@@ -6,8 +6,11 @@ import '../../../../shared/extensions/screen_util_extension.dart';
 import 'components.dart';
 
 class HomeAppBar extends PreferredSize {
-  HomeAppBar({Key? key})
-      : super(
+  final Future<void> Function() logout;
+  HomeAppBar({
+    Key? key,
+    required this.logout,
+  }) : super(
           key: key,
           preferredSize: Size.fromHeight(124.height),
           child: SafeArea(
@@ -28,6 +31,7 @@ class HomeAppBar extends PreferredSize {
                   NotificationRow(
                     hasNotification: false,
                     storage: Get.find(),
+                    logout: logout,
                   ),
                 ],
               ),

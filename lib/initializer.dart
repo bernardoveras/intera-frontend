@@ -1,10 +1,13 @@
 import 'dart:convert';
 import 'dart:isolate';
 import 'dart:typed_data';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
+import 'package:intera/data/repositories/authentication_repository.dart';
 import 'package:intera/shared/helpers/theme_helper.dart';
+import 'domain/repositories/authentication_repository.dart';
 import 'shared/consts.dart';
 import 'shared/extensions/int_extensions.dart';
 import 'package:get/get.dart';
@@ -39,7 +42,17 @@ class Initializer {
       () => DialogService(),
       fenix: true,
     );
+    Get.lazyPut<IAuthenticationRepository>(
+      () => AuthenticationRepository(
+        FirebaseAuth.instance,
+        Get.find(),
+        Get.find(),
+      ),
+      fenix: true,
+    );
   }
+
+ 
 
   static Future<void> _startFirebase() async {
     await Firebase.initializeApp();

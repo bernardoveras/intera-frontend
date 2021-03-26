@@ -11,10 +11,12 @@ import '../../../../shared/extensions/screen_util_extension.dart';
 class NotificationRow extends StatelessWidget {
   final bool hasNotification;
   final ILocalStorage storage;
+  final Future<void> Function() logout;
 
   const NotificationRow({
     Key? key,
     required this.storage,
+    required this.logout,
     this.hasNotification = false,
   }) : super(key: key);
 
@@ -61,8 +63,7 @@ class NotificationRow extends StatelessWidget {
                     Obx(
                       () => Item(
                         title: 'Exibir total das interas',
-                        isChecked:
-                            Settings.exibirTotalDeInteras.value ?? false,
+                        isChecked: Settings.exibirTotalDeInteras.value ?? false,
                         onTap: () async {
                           Settings.exibirTotalDeInteras.value =
                               !Settings.exibirTotalDeInteras.value!;
@@ -72,6 +73,13 @@ class NotificationRow extends StatelessWidget {
                           );
                         },
                       ),
+                    ),
+                    Item(
+                      title: 'Sair da conta',
+                      titleColor: Colors.red,
+                      onTap: () async {
+                        await logout();
+                      },
                     ),
                   ],
                 ),

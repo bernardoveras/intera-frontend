@@ -20,13 +20,14 @@ class _HomePageState extends State<HomePage>
   @override
   void initState() {
     tabController = TabController(length: 2, vsync: this);
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: HomeAppBar(),
+      appBar: HomeAppBar(logout: controller.logout),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {},
