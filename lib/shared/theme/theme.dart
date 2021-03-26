@@ -8,14 +8,14 @@ import 'package:intera/shared/settings.dart';
 
 class AppTheme {
   /// Pallete of `Primary` color's
-  static Color primary = Color(0xFF665CC8);
-  static Color primaryDark = Color(0xFF4F45AA);
-  static Color primaryLight = Color(0xFF7079D1);
+  static Color primary = Color(0xFF6D5FFD);
+  static Color primaryDark = Color(0xFF5E68E1);
+  static Color primaryLight = Color(0xFF878EE9);
 
   /// Pallete of `Secondary` color's
-  static Color secondary = Color(0xFF33D3AB);
-  static Color secondaryDark = Color(0xFF21B691);
-  static Color secondaryLight = Color(0xFF66E395);
+  static Color secondary = Color(0xFFFFC634);
+  static Color secondaryDark = Color(0xFFFFDD86);
+  static Color secondaryLight = Color(0xFFFEE8AE);
 
   /// Pallete of `State` color's
   static Color error = Color(0xFFFF3B3B);

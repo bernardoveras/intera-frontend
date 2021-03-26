@@ -53,9 +53,14 @@ class Initializer {
 
   static Future<void> _startUserSettings(ILocalStorage storage) async {
     String? imageBase64 = await storage.get(PATH.USER_IMAGE);
+    String? remember = await storage.get(PATH.REMEMBER);
 
     Uint8List? imageDecoded =
         imageBase64 != null ? base64Decode(imageBase64) : null;
+
+    if (remember != null) {
+      Settings.remember = remember.toBool;
+    }
 
     if (imageDecoded != null) {
       Settings.usernameImage?.value = imageDecoded;
