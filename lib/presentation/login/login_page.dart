@@ -44,39 +44,44 @@ class LoginPage extends GetView<LoginController> {
                       ),
                     ),
                     Obx(
-                      () => OutlinedButton(
-                        onPressed: controller.loading.value == false
-                            ? () {
-                                // ToDo: Implementar a criação da conta
-                                print('Criar uma conta');
-                              }
-                            : null,
-                        style: OutlinedButton.styleFrom(
-                          side: BorderSide.none,
-                          primary: Theme.of(context).backgroundColor,
-                          shadowColor: Colors.red,
-                          backgroundColor: Colors.transparent,
-                          elevation: 0,
-                          minimumSize: Size(double.infinity, 45.height),
-                        ),
-                        child: RichText(
-                          text: TextSpan(
-                            style: TextStyle(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.grey.shade400,
-                            ),
-                            children: [
-                              TextSpan(text: "Ainda não tem uma conta? "),
-                              TextSpan(
-                                text: "Crie uma agora!",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Theme.of(context).primaryColor,
-                                  fontSize: 14.sp,
-                                ),
+                      () => FadeInUp(
+                        duration: Duration(milliseconds: 300),
+                        delay: Duration(milliseconds: 700),
+                        from: 30,
+                        child: OutlinedButton(
+                          onPressed: controller.loading.value == false
+                              ? () {
+                                  // ToDo: Implementar a criação da conta
+                                  print('Criar uma conta');
+                                }
+                              : null,
+                          style: OutlinedButton.styleFrom(
+                            side: BorderSide.none,
+                            primary: Theme.of(context).backgroundColor,
+                            shadowColor: Colors.red,
+                            backgroundColor: Colors.transparent,
+                            elevation: 0,
+                            minimumSize: Size(double.infinity, 45.height),
+                          ),
+                          child: RichText(
+                            text: TextSpan(
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.grey.shade400,
                               ),
-                            ],
+                              children: [
+                                TextSpan(text: "Ainda não tem uma conta? "),
+                                TextSpan(
+                                  text: "Crie uma agora!",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Theme.of(context).primaryColor,
+                                    fontSize: 14.sp,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),

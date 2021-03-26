@@ -1,6 +1,12 @@
 class PATH {
-  static String THEME = 'theme';
-  static String USER_IMAGE = 'user_image';
-  static String EXIBIR_TOTAL_INTERAS = 'exibir_total_interas';
-  static String REMEMBER = 'remember';
+  static const String USER = 'user-informations';
+  static const String THEME = 'theme';
+  static const String USER_IMAGE = 'user-image';
+  static const String EXIBIR_TOTAL_INTERAS = 'exibir-total-interas';
+  static const String REMEMBER = 'remember';
+}
+
+
+class Consts{
+  static const String BASE_URL = 'https://intera-application-default-rtdb.firebaseio.com/';
 }

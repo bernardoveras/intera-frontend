@@ -51,7 +51,8 @@ class ProfilePicture extends StatelessWidget {
                   ),
                 )
               : Text(
-                  Settings.username.substring(0, 1).toUpperCase(),
+                  Settings.user?.name ??
+                              'Sem nome'.substring(0, 1).toUpperCase(),
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w500,
