@@ -1,7 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:intera/shared/extensions/screen_util_extension.dart';
-import 'package:intera/shared/settings.dart';
 
 class ICheckBox extends StatefulWidget {
   final bool value;

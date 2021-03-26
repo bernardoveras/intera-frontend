@@ -22,11 +22,12 @@ class ProfilePicture extends StatelessWidget {
       child: GestureDetector(
         onTap: () async {
           AppTheme.changeStatusBar<Dark>(SystemUiOverlayStyle(
-            statusBarColor: Colors.white,
+            statusBarColor: Colors.white.withOpacity(0.85),
           ));
           await Get.dialog(
             MaximizePicture(
               storage: Get.find(),
+              dialogService: Get.find(),
             ),
           );
           AppTheme.changeStatusBar<Dark>();
@@ -52,7 +53,7 @@ class ProfilePicture extends StatelessWidget {
                 )
               : Text(
                   Settings.user?.name ??
-                              'Sem nome'.substring(0, 1).toUpperCase(),
+                      'Sem nome'.substring(0, 1).toUpperCase(),
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w500,
