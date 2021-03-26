@@ -21,8 +21,12 @@ class LoginController extends GetxController {
   final senhaError = RxString();
   final senhaFocus = FocusNode().obs;
 
-  bool get enableButton =>
-      email.value.isBlank == false && senha.value.isBlank == false;
+  bool get enableButton => validateEmail && validateSenha;
+
+  bool get validateEmail =>
+      email.value?.isEmail == true && email.value.isBlank == false;
+  bool get validateSenha =>
+      senha.value.isBlank == false && senha.value!.length >= 6;
 
   ///[Remember-me]
   RxBool remember = false.obs;
@@ -40,7 +44,6 @@ class LoginController extends GetxController {
     } catch (e) {
       print(e);
       loading.value = false;
-
     } finally {
       loading.value = false;
     }

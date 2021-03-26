@@ -28,6 +28,11 @@ class LoginForm extends StatelessWidget {
             focusNode: controller.emailFocus.value,
             textInputAction: TextInputAction.next,
             readOnly: controller.loading.value == true,
+            preffixIcon: controller.validateEmail == true ? Icon(
+              Icons.check,
+              color: Colors.green,
+              size: 20.height,
+            ) : null,
           ),
         ),
         SizedBox(height: 20.height),
@@ -40,7 +45,7 @@ class LoginForm extends StatelessWidget {
             controller: controller.senhaController,
             focusNode: controller.senhaFocus.value,
             readOnly: controller.loading.value == true,
-            preffixIcon: controller.enableButton == true ? Icon(
+            preffixIcon: controller.validateSenha == true ? Icon(
               Icons.check,
               color: Colors.green,
               size: 20.height,
