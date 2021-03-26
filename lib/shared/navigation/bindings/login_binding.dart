@@ -13,6 +13,7 @@ class LoginBinding extends Bindings {
       () => LoginController(
         localStorage: Get.find(),
         loginWithEmail: Get.find(),
+        dialogService: Get.find(),
       ),
     );
   }

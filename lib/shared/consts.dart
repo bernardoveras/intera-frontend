@@ -9,4 +9,7 @@ class PATH {
 
 class Consts{
   static const String BASE_URL = 'https://intera-application-default-rtdb.firebaseio.com/';
+
+  static const String USER_NOTFOUND = 'Usuário não encontrado';
+  static const String INCORRECT_PASSWORD = 'Senha incorreta';
 }
