@@ -19,10 +19,12 @@ dependencies:
   intl: ^0.17.0
   # Package para obter imagens da galeria
   image_picker: ^0.7.3
-  # Firebase Crashlytics - Report de Erros
+  # Report's de Erros
   firebase_crashlytics: ^1.0.0
   # Firebase Core
   firebase_core: ^1.0.2
+  # Autenticação com Firebase
+  firebase_auth: ^1.0.1
   
   flutter:
     sdk: flutter

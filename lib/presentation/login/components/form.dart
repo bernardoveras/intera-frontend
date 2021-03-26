@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intera/presentation/login/components/components.dart';
@@ -19,62 +20,88 @@ class LoginForm extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Obx(
-          () => LoginTextField(
-            titleText: 'E-mail',
-            hintText: 'example@intera.com',
-            keyboardType: TextInputType.emailAddress,
-            onChanged: controller.email,
-            controller: controller.emailController,
-            focusNode: controller.emailFocus.value,
-            textInputAction: TextInputAction.next,
-            readOnly: controller.loading.value == true,
-            preffixIcon: controller.validateEmail == true ? Icon(
-              Icons.check,
-              color: Colors.green,
-              size: 20.height,
-            ) : null,
+          () => FadeInDown(
+            duration: Duration(milliseconds: 300),
+            delay: Duration(milliseconds: 300),
+            from: 30,
+            child: LoginTextField(
+              titleText: 'E-mail',
+              hintText: 'example@intera.com',
+              keyboardType: TextInputType.emailAddress,
+              onChanged: controller.email,
+              controller: controller.emailController,
+              focusNode: controller.emailFocus.value,
+              textInputAction: TextInputAction.next,
+              readOnly: controller.loading.value == true,
+              preffixIcon: controller.validateEmail == true
+                  ? Icon(
+                      Icons.check,
+                      color: Colors.green,
+                      size: 20.height,
+                    )
+                  : null,
+            ),
           ),
         ),
         SizedBox(height: 20.height),
         Obx(
-          () => LoginTextField(
-            titleText: 'Senha',
-            hintText: 'Digite sua senha',
-            obscure: true,
-            onChanged: controller.senha,
-            controller: controller.senhaController,
-            focusNode: controller.senhaFocus.value,
-            readOnly: controller.loading.value == true,
-            preffixIcon: controller.validateSenha == true ? Icon(
-              Icons.check,
-              color: Colors.green,
-              size: 20.height,
-            ) : null,
-            onFieldSubmitted: (val) async {
-              await controller.autenticar();
-            },
+          () => FadeInDown(
+            delay: Duration(milliseconds: 300),
+            duration: Duration(milliseconds: 300),
+            from: 30,
+            child: LoginTextField(
+              titleText: 'Senha',
+              hintText: 'Digite sua senha',
+              obscure: true,
+              onChanged: controller.senha,
+              controller: controller.senhaController,
+              focusNode: controller.senhaFocus.value,
+              readOnly: controller.loading.value == true,
+              preffixIcon: controller.validateSenha == true
+                  ? Icon(
+                      Icons.check,
+                      color: Colors.green,
+                      size: 20.height,
+                    )
+                  : null,
+              onFieldSubmitted: controller.enableButton == true
+                  ? (val) async {
+                      await controller.autenticar();
+                    }
+                  : null,
+            ),
           ),
         ),
         SizedBox(height: 30.height),
         Obx(
-          () => ICheckBox(
-            value: controller.remember.value!,
-            title: 'Lembrar-me',
-            onChanged: (value) {
-              controller.remember.value = value;
-            },
+          () => FadeInLeft(
+            duration: Duration(milliseconds: 300),
+            delay: Duration(milliseconds: 300),
+            from: 30,
+            child: ICheckBox(
+              value: controller.remember.value!,
+              title: 'Lembrar-me',
+              onChanged: (value) {
+                controller.remember.value = value;
+              },
+            ),
           ),
         ),
         SizedBox(height: 30.height),
         Obx(
-          () => IButton(
-            title: 'Entrar',
-            loading: controller.loading.value ?? false,
-            onTap: controller.enableButton == true
-                ? () async {
-                    await controller.autenticar();
-                  }
-                : null,
+          () => FadeInUp(
+            duration: Duration(milliseconds: 300),
+            delay: Duration(milliseconds: 400),
+            from: 30,
+            child: IButton(
+              title: 'Entrar',
+              loading: controller.loading.value ?? false,
+              onTap: controller.enableButton == true
+                  ? () async {
+                      await controller.autenticar();
+                    }
+                  : null,
+            ),
           ),
         ),
       ],
