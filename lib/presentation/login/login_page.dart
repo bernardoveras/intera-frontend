@@ -3,6 +3,7 @@ import 'package:intera/presentation/login/components/form.dart';
 import 'package:intera/presentation/login/login_controller.dart';
 import 'package:intera/shared/components/circular_loading.dart';
 import 'package:intera/shared/extensions/screen_util_extension.dart';
+import 'package:ndialog/ndialog.dart';
 import 'components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -50,9 +51,10 @@ class LoginPage extends GetView<LoginController> {
                         from: 30,
                         child: OutlinedButton(
                           onPressed: controller.loading.value == false
-                              ? () {
+                              ? () async {
                                   // ToDo: Implementar a criação da conta
                                   print('Criar uma conta');
+                                  
                                 }
                               : null,
                           style: OutlinedButton.styleFrom(
@@ -114,7 +116,7 @@ class IButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: onTap,
+      onPressed: onTap == null ? () {} : onTap,
       child: loading == false
           ? Text(
               title,
@@ -134,7 +136,10 @@ class IButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(8.radius),
           side: BorderSide.none,
         ),
-        primary: backgroundColor ?? Theme.of(context).primaryColor,
+        primary: onTap == null
+            ? backgroundColor?.withOpacity(0.6) ??
+                Theme.of(context).primaryColor.withOpacity(0.6)
+            : backgroundColor ?? Theme.of(context).primaryColor,
         elevation: 0,
         shadowColor: Colors.transparent,
       ),

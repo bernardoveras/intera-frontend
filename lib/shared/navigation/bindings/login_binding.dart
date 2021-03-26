@@ -8,14 +8,12 @@ import 'package:intera/presentation/login/login_controller.dart';
 class LoginBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<IAuthenticationRepository>(
-      () => AuthenticationRepository(FirebaseAuth.instance),
-    );
     Get.lazyPut<ILoginWithEmail>(() => LoginWithEmail(Get.find()));
     Get.lazyPut(
       () => LoginController(
         localStorage: Get.find(),
         loginWithEmail: Get.find(),
+        dialogService: Get.find(),
       ),
     );
   }

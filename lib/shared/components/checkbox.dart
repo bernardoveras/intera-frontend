@@ -33,21 +33,20 @@ class ICheckBox extends StatefulWidget {
 }
 
 class _ICheckBoxState extends State<ICheckBox> {
-  late AnimationController _upAnimController;
-
+  late bool showIcon;
   void _onChanged(bool value) {
-    if (value == true) {
-      _upAnimController.forward();
-    } else {
-      _upAnimController.reverse();
-    }
-
+    setState(() => showIcon = value);
     widget.onChanged(value);
   }
 
   @override
+  void initState() {
+    super.initState();
+    showIcon = widget.value;
+  }
+
+  @override
   void dispose() {
-    _upAnimController.dispose();
     super.dispose();
   }
 
@@ -63,28 +62,42 @@ class _ICheckBoxState extends State<ICheckBox> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           AnimatedContainer(
-            duration: widget.duration ?? Duration(milliseconds: 200),
+            duration: widget.duration ?? Duration(milliseconds: 1000),
             width: widget.width ?? 24.width,
             height: widget.height ?? 24.height,
+            curve: Curves.fastLinearToSlowEaseIn,
+            clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(
+              border: Border.all(
+                color: widget.value == false
+                    ? Colors.grey.shade300
+                    : Colors.transparent,
+              ),
               color: widget.value == true
                   ? widget.checkColor ?? Theme.of(context).primaryColor
                   : widget.uncheckColor ?? Colors.grey.shade200,
               borderRadius: widget.radius ?? BorderRadius.circular(5.radius),
             ),
-            child: FadeInUp(
-              manualTrigger: true,
-              animate: false,
-              controller: (controller) {
-                _upAnimController = controller;
-                if (widget.value == true) _upAnimController.forward();
-              },
-              duration: widget.duration ?? Duration(milliseconds: 250),
-              child: Icon(
-                Icons.check,
-                color: Colors.white,
-                size: 14.height,
+            child: TweenAnimationBuilder(
+              curve: Curves.fastLinearToSlowEaseIn,
+              duration: Duration(milliseconds: 500),
+              tween: Tween(begin: 0.0, end: showIcon == true ? 0.0 : 20.0),
+              child: AnimatedOpacity(
+                duration: Duration(milliseconds: 700),
+                opacity: showIcon == true ? 1.0 : 0.0,
+                curve: Curves.fastLinearToSlowEaseIn,
+                child: Icon(
+                  Icons.check,
+                  color: Colors.white,
+                  size: 14.height,
+                ),
               ),
+              builder: (_, double value, child) {
+                return Transform.translate(
+                  offset: Offset(0.0, value),
+                  child: child!,
+                );
+              },
             ),
           ),
           SizedBox(width: widget.title != null ? 8.width : 0),

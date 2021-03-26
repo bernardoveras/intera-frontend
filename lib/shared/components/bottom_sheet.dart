@@ -52,11 +52,11 @@ class _MaterialBottomSheetState extends State<MaterialBottomSheet> {
 
 class Item extends StatelessWidget {
   final String title;
-  final bool isChecked;
+  final Color? titleColor;
+  final bool? isChecked;
   final Function()? onTap;
 
-  const Item(
-      {Key? key, required this.title, required this.isChecked, this.onTap})
+  const Item({Key? key, required this.title, this.isChecked, this.onTap, this.titleColor})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -76,29 +76,32 @@ class Item extends StatelessWidget {
                   title,
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
-                    color: Colors.black,
+                    color: titleColor ?? Colors.black,
                   ),
                 ),
-                SizedBox(
-                  height: 24.height,
-                  width: 24.width,
-                  child: Checkbox(
-                    value: isChecked,
-                    checkColor: Colors.white,
-                    overlayColor: MaterialStateProperty.all<Color>(
-                      Colors.transparent,
-                    ),
-                    fillColor: MaterialStateProperty.all<Color>(
-                      Theme.of(context).primaryColor,
-                    ),
-                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    onChanged: onTap != null
-                        ? (val) {
-                            onTap!();
-                          }
-                        : null,
-                  ),
-                )
+                isChecked != null
+                    ? SizedBox(
+                        height: 24.height,
+                        width: 24.width,
+                        child: Checkbox(
+                          value: isChecked,
+                          checkColor: Colors.white,
+                          overlayColor: MaterialStateProperty.all<Color>(
+                            Colors.transparent,
+                          ),
+                          fillColor: MaterialStateProperty.all<Color>(
+                            Theme.of(context).primaryColor,
+                          ),
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                          onChanged: onTap != null
+                              ? (val) {
+                                  onTap!();
+                                }
+                              : null,
+                        ),
+                      )
+                    : SizedBox(),
               ],
             ),
           ),

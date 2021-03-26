@@ -25,6 +25,8 @@ dependencies:
   firebase_core: ^1.0.2
   # Autenticação com Firebase
   firebase_auth: ^1.0.1
+  # Package para dialogs
+  ndialog: ^4.0.1
   
   flutter:
     sdk: flutter

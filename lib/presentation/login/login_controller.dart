@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:intera/data/models/user_information_model.dart';
@@ -9,13 +10,18 @@ import 'package:intera/domain/services/local_storage_service.dart';
 import 'package:intera/domain/usecases/login_with_email.dart';
 import 'package:intera/shared/consts.dart';
 import 'package:intera/shared/navigation/routes.dart';
+import 'package:intera/shared/services/dialog_service.dart';
 import 'package:intera/shared/settings.dart';
 
 class LoginController extends GetxController {
   final ILocalStorage localStorage;
   final ILoginWithEmail loginWithEmail;
+  final IDialogService dialogService;
 
-  LoginController({required this.localStorage, required this.loginWithEmail});
+  LoginController(
+      {required this.localStorage,
+      required this.loginWithEmail,
+      required this.dialogService});
 
   ///[E-mail]
   RxString email = ''.obs;
@@ -43,6 +49,8 @@ class LoginController extends GetxController {
 
   Future<void> autenticar() async {
     loading.value = true;
+
+    FocusManager.instance.primaryFocus?.unfocus();
     try {
       var result = await loginWithEmail(
         AuthenticationParams(email.value!, senha.value!),
@@ -58,12 +66,35 @@ class LoginController extends GetxController {
         Settings.user = user;
         if (Settings.remember)
           await localStorage.add(PATH.USER, jsonEncode(user.toJson()));
-          
+
         Get.offAllNamed(Routes.HOME);
       }
     } on ErrorLoginEmail catch (error) {
       /// Fazer um notify com o `error.message`
+      dialogService.confirmationDialog(
+          title: error.message,
+          content: error.message == Consts.USER_NOTFOUND
+              ? 'O usuário informado não foi encontrado, verifique seu nome de usuário'
+              : error.message == Consts.INCORRECT_PASSWORD
+                  ? 'A senha informada está incorreta, verifique e tente novamente'
+                  : error.message,
+          confirmationText: 'Tentar novamente',
+          alignment: Alignment.center,
+          textAlign: TextAlign.center,
+          onConfirm: () {
+            if (error.message == Consts.INCORRECT_PASSWORD) {
+              senhaFocus.value?.requestFocus();
+            } else {
+              emailFocus.value?.requestFocus();
+            }
+          });
+    } on InternalError catch (error) {
       print(error.message);
+      Get.rawSnackbar(
+        message: error.message,
+        backgroundColor: Colors.red,
+      );
+      loading.value = false;
     } catch (error) {
       print(error);
       loading.value = false;

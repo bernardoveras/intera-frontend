@@ -9,10 +9,14 @@ class Settings {
   static Rx<ThemeMode> theme = ThemeMode.light.obs;
   static Rx<Uint8List>? usernameImage = Rx<Uint8List>();
 
-
   /// Visualizar o `componente` de total
   /// das interas na tela inicial!
   static RxBool exibirTotalDeInteras = true.obs;
-  
+
   static bool remember = false;
+
+  static void clear() {
+    user = null;
+    exibirTotalDeInteras.value = true;
+  }
 }
