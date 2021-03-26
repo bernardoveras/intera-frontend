@@ -16,6 +16,8 @@ import 'data/services/local_storage_service.dart';
 import 'domain/services/local_storage_service.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
 
+import 'shared/services/dialog_service.dart';
+
 class Initializer {
   static Future<void> init() async {
     try {
@@ -25,10 +27,18 @@ class Initializer {
       await _startLocalStorage();
       await _startTheme();
       await _startAllSettings();
+      _startServices();
     } catch (e) {
       print(e);
       rethrow;
     }
+  }
+
+  static void _startServices() {
+    Get.lazyPut<IDialogService>(
+      () => DialogService(),
+      fenix: true,
+    );
   }
 
   static Future<void> _startFirebase() async {

@@ -1,8 +1,6 @@
-import 'dart:convert';
-
+import 'dart:convert'; 
 import 'package:get/get.dart';
 import 'package:intera/data/models/user_information_model.dart';
-import 'package:intera/domain/entities/user_information.dart';
 import 'package:intera/domain/services/local_storage_service.dart';
 import 'package:intera/shared/consts.dart';
 import 'package:intera/shared/settings.dart';
