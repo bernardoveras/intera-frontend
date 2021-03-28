@@ -86,7 +86,12 @@ class ItemInteras extends StatelessWidget {
                             Container(
                               width: 200.width,
                               child: Text(
-                                intera.members.join(', '),
+                                intera.members != null &&
+                                        intera.members!.length > 0
+                                    ? intera.members!
+                                        .map((e) => e.nome)
+                                        .join(', ')
+                                    : 'Sem membros...',
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
@@ -98,7 +103,7 @@ class ItemInteras extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              '${Formatter.currency(intera.totalPago)} /${Formatter.currency(intera.total, false)}',
+                              'Pago: ${Formatter.currency(intera.totalPago)} de${Formatter.currency(intera.total, false)}',
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(

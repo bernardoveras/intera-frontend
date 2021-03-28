@@ -1,13 +1,11 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intera/shared/settings.dart';
 import '../../../../shared/extensions/screen_util_extension.dart';
 
 class ProfileName extends StatelessWidget {
-  final String profileName;
-
-  const ProfileName({Key? key, required this.profileName}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return FadeInUp(
@@ -28,14 +26,17 @@ class ProfileName extends StatelessWidget {
           ),
           Container(
             width: 160.width,
-            child: Text(
-              profileName,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                color: Theme.of(context).primaryColor,
-                fontWeight: FontWeight.bold,
-                fontSize: 24.sp,
+            child: Obx(
+              () => AutoSizeText(
+                Settings.user.value?.name ?? 'Sem nome',
+                maxLines: 1,
+                maxFontSize: 24,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24.sp,
+                ),
               ),
             ),
           ),

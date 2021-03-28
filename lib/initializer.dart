@@ -7,6 +7,7 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:intera/data/repositories/authentication_repository.dart';
 import 'package:intera/shared/helpers/theme_helper.dart';
+import 'package:intera/shared/services/connectivity_services.dart';
 import 'domain/repositories/authentication_repository.dart';
 import 'shared/consts.dart';
 import 'shared/extensions/int_extensions.dart';
@@ -38,6 +39,7 @@ class Initializer {
   }
 
   static void _startServices() {
+    Get.lazyPut<ConnectivityService>(() => ConnectivityService(), fenix: true);
     Get.lazyPut<IDialogService>(
       () => DialogService(),
       fenix: true,
@@ -51,8 +53,6 @@ class Initializer {
       fenix: true,
     );
   }
-
- 
 
   static Future<void> _startFirebase() async {
     await Firebase.initializeApp();

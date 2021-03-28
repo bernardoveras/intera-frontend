@@ -2,7 +2,7 @@ import 'package:intera/data/models/user_information_model.dart';
 
 class UserInformation {
   final String token;
-  final String? name;
+  String? name;
   final String? pictureUrl;
   final String? email;
 

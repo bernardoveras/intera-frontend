@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:intera/domain/entities/member.dart';
 import 'package:intera/domain/usecases/logout.dart';
 import 'package:intera/domain/entities/intera.dart';
 
@@ -14,12 +15,17 @@ class HomeController extends GetxController {
   List<Intera> interas = <Intera>[
     Intera(
       title: 'Carnaval',
-      members: ['Bernardo', 'Juan', 'Brenda', 'VT', 'Alafe', 'Pedro', 'PH'],
       total: 200,
+      members: [
+        Member(nome: 'Juan Veras'),
+        Member(nome: 'Junior Veras'),
+        Member(nome: 'PH',valorPago: 66),
+      ]
     ),
   ];
 
   Future<void> logout() async {
     await _logout();
+    
   }
 }
