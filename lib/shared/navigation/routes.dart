@@ -19,7 +19,7 @@ class Routes {
       await FirebaseAuth.instance.signOut();
     }
 
-    if (Settings.user != null && Settings.remember == true) {
+    if (Settings.user.value != null && Settings.remember == true) {
       return HOME;
     } else {
       return LOGIN;

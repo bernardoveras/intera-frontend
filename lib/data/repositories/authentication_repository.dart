@@ -34,6 +34,7 @@ class AuthenticationRepository implements IAuthenticationRepository {
     await dialogService.confirmationDialog(
       title: 'Sair da conta',
       content: 'Deseja realmente sair da sua conta?',
+      cancelText: 'Cancelar',
       onConfirm: () async {
         await firebaseAuth.signOut();
         await _clearSettingsAndStorage();
