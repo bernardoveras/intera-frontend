@@ -13,9 +13,9 @@ class AppTheme {
   static Color primaryLight = Color(0xFF878EE9);
 
   /// Pallete of `Secondary` color's
-  static Color secondary = Color(0xFFFFC634);
-  static Color secondaryDark = Color(0xFFFFDD86);
-  static Color secondaryLight = Color(0xFFFEE8AE);
+  static Color secondary = Color(0xFF3FD4B4);
+  static Color secondaryDark = Color(0xFF3FD4B4);
+  static Color secondaryLight = Color(0xFF3FD4B4);
 
   /// Pallete of `State` color's
   static Color error = Color(0xFFFF3B3B);
@@ -25,7 +25,7 @@ class AppTheme {
 
   /// Other color's
   static Color background = Color(0xFFFAFAFC);
-  static Color backgroundDark = Color(0xFF17191F);
+  static Color backgroundDark = Color(0xFF1D1B1C);
 
   /// Init `theme light data` from application
   static final ThemeData light = ThemeData(
@@ -40,6 +40,7 @@ class AppTheme {
     primaryColorLight: primaryLight,
     accentColorBrightness: Brightness.light,
     backgroundColor: background,
+    
     buttonColor: primary,
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: primary,
@@ -50,7 +51,7 @@ class AppTheme {
       splashColor: Colors.transparent,
       foregroundColor: Colors.white,
     ),
-    accentColor: primary,
+    accentColor: secondary,
     splashColor: primary,
     scaffoldBackgroundColor: background,
     cardColor: Colors.white,
@@ -151,6 +152,10 @@ class AppTheme {
         decoration: TextDecoration.none,
       ),
     ),
+    bottomSheetTheme: BottomSheetThemeData(
+      backgroundColor: background,
+      elevation: 0,
+    ),
     buttonTheme: ButtonThemeData(),
   );
 
@@ -179,12 +184,16 @@ class AppTheme {
       splashColor: Colors.transparent,
       foregroundColor: Colors.white,
     ),
-    accentColor: primary,
+    accentColor: secondary,
     splashColor: primary,
     scaffoldBackgroundColor: backgroundDark,
     cardColor: Colors.grey.shade900,
     cardTheme: CardTheme(
       color: Colors.grey.shade900,
+    ),
+    bottomSheetTheme: BottomSheetThemeData(
+      backgroundColor: backgroundDark,
+      elevation: 0,
     ),
     iconTheme: IconThemeData(),
     textTheme: TextTheme(

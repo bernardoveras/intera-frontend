@@ -48,7 +48,9 @@ class ProfilePage extends GetView<ProfileController> {
                 highlightColor: Colors.transparent,
                 icon: Icon(
                   Icons.close,
-                  color: Colors.grey.shade900,
+                  color: Settings.theme.value == ThemeMode.light
+                      ? Colors.grey.shade900
+                      : Colors.white,
                   size: 24.height,
                 ),
                 onPressed: () async {
@@ -71,7 +73,9 @@ class ProfilePage extends GetView<ProfileController> {
             child: Text(
               'Perfil',
               style: TextStyle(
-                color: Colors.black,
+                color: Settings.theme.value == ThemeMode.light
+                    ? Colors.black
+                    : Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 24.sp,
               ),
@@ -139,22 +143,26 @@ class ProfilePage extends GetView<ProfileController> {
                                 ),
                               )
                             : null,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.shade500,
-                            blurRadius: 15,
-                          ),
-                        ],
+                        boxShadow: Settings.theme.value == ThemeMode.light
+                            ? [
+                                BoxShadow(
+                                  color: Colors.grey.shade500,
+                                  blurRadius: 15,
+                                ),
+                              ]
+                            : null,
                       ),
                       child: Stack(
                         alignment: Alignment.center,
                         children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.5),
-                              shape: BoxShape.circle,
-                            ),
-                          ),
+                          Settings.theme.value == ThemeMode.light
+                              ? Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.black.withOpacity(0.5),
+                                    shape: BoxShape.circle,
+                                  ),
+                                )
+                              : SizedBox.shrink(),
                           Icon(
                             Icons.camera_alt,
                             color: Colors.white,
@@ -174,7 +182,9 @@ class ProfilePage extends GetView<ProfileController> {
                           child: Text(
                             Settings.user.value!.name!,
                             style: TextStyle(
-                              color: Colors.black,
+                              color: Settings.theme.value == ThemeMode.light
+                                  ? Colors.black
+                                  : Colors.white,
                               fontSize: 24.sp,
                               fontWeight: FontWeight.w500,
                             ),
@@ -283,7 +293,9 @@ class EditTextField extends StatelessWidget {
       onChanged: onChanged,
       obscureText: obscure,
       style: TextStyle(
-        color: Colors.black,
+        color: Settings.theme.value == ThemeMode.light
+            ? Colors.black
+            : Colors.white,
         fontSize: 16.sp,
         fontWeight: FontWeight.bold,
       ),
@@ -293,13 +305,25 @@ class EditTextField extends StatelessWidget {
       onFieldSubmitted: onFieldSubmitted,
       decoration: InputDecoration(
         border: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade300)),
+            borderSide: BorderSide(
+                color: Settings.theme.value == ThemeMode.light
+                    ? Colors.grey.shade300
+                    : Colors.white)),
         enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade300)),
+            borderSide: BorderSide(
+                color: Settings.theme.value == ThemeMode.light
+                    ? Colors.grey.shade300
+                    : Colors.white)),
         focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade300)),
+            borderSide: BorderSide(
+                color: Settings.theme.value == ThemeMode.light
+                    ? Colors.grey.shade300
+                    : Colors.white)),
         disabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade300)),
+            borderSide: BorderSide(
+                color: Settings.theme.value == ThemeMode.light
+                    ? Colors.grey.shade300
+                    : Colors.white)),
         labelText: labelText,
         labelStyle: TextStyle(
           color: Colors.grey,

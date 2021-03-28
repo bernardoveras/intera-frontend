@@ -29,7 +29,10 @@ class _HomePageState extends State<HomePage>
     return Scaffold(
       appBar: HomeAppBar(logout: controller.logout),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: Icon(
+          Icons.add,
+          size: 24.height,
+        ),
         onPressed: () {},
       ),
       body: SafeArea(

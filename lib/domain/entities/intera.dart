@@ -6,6 +6,7 @@ class Intera {
   final String? id = Uuid().v4();
   final String title;
   final double total;
+  bool completed;
   List<Member>? members;
 
   double get totalPago =>
@@ -18,6 +19,7 @@ class Intera {
     required this.title,
     this.members,
     this.total = 0.0,
+    this.completed = false,
   }) {
     if (members == null) members = <Member>[];
   }
