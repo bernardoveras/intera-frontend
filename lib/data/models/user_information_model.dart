@@ -14,15 +14,12 @@ class UserInformationModel extends UserInformation {
           email: email,
         );
 
-  factory UserInformationModel.fromFirebase(UserCredential credential) {
-    if (credential.user?.uid == null)
-      throw Exception('O usuário não possui um ID');
-
+  factory UserInformationModel.fromFirebase(User user) {
     return UserInformationModel(
-      token: credential.user?.uid ?? '',
-      name: credential.user?.displayName,
-      pictureUrl: credential.user?.photoURL,
-      email: credential.user?.email,
+      token: user.uid,
+      name: user.displayName,
+      pictureUrl: user.photoURL,
+      email: user.email,
     );
   }
 

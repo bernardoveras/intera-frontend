@@ -3,7 +3,6 @@ import 'package:intera/presentation/login/components/form.dart';
 import 'package:intera/presentation/login/login_controller.dart';
 import 'package:intera/shared/components/circular_loading.dart';
 import 'package:intera/shared/extensions/screen_util_extension.dart';
-import 'package:ndialog/ndialog.dart';
 import 'components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

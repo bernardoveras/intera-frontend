@@ -63,7 +63,7 @@ class LoginController extends GetxController {
 
       if (result != null) {
         UserInformationModel user = result.toModel();
-        Settings.user = user;
+        Settings.user.value = user;
         if (Settings.remember)
           await localStorage.add(PATH.USER, jsonEncode(user.toJson()));
 

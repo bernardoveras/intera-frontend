@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intera/shared/theme/theme.dart';
 import 'package:intera/shared/extensions/screen_util_extension.dart';
 import 'package:ndialog/ndialog.dart';
 

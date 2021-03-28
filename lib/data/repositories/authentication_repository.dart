@@ -26,7 +26,7 @@ class AuthenticationRepository implements IAuthenticationRepository {
       password: params.password,
     );
 
-    return UserInformationModel.fromFirebase(userCredential);
+    return UserInformationModel.fromFirebase(userCredential.user!);
   }
 
   @override
@@ -35,6 +35,7 @@ class AuthenticationRepository implements IAuthenticationRepository {
       title: 'Sair da conta',
       content: 'Deseja realmente sair da sua conta?',
       onConfirm: () async {
+        await firebaseAuth.signOut();
         await _clearSettingsAndStorage();
         Get.offAllNamed(Routes.LOGIN);
       },

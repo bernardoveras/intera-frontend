@@ -21,11 +21,9 @@ class HomeAppBar extends PreferredSize {
                 children: [
                   Row(
                     children: [
-                      Obx(() =>
-                          ProfilePicture(image: Settings.usernameImage?.value)),
+                      ProfilePicture(Get.find()),
                       SizedBox(width: 20.width),
-                      ProfileName(
-                          profileName: Settings.user?.name ?? 'Sem nome'),
+                      ProfileName(),
                     ],
                   ),
                   NotificationRow(

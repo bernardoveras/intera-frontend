@@ -5,7 +5,7 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:intera/data/models/user_information_model.dart';
 
 class Settings {
-  static UserInformationModel? user;
+  static Rx<UserInformationModel?> user = Rx<UserInformationModel?>();
   static Rx<ThemeMode> theme = ThemeMode.light.obs;
   static Rx<Uint8List>? usernameImage = Rx<Uint8List>();
 
@@ -16,7 +16,7 @@ class Settings {
   static bool remember = false;
 
   static void clear() {
-    user = null;
+    user.value = null;
     exibirTotalDeInteras.value = true;
   }
 }
