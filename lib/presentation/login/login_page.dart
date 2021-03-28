@@ -53,7 +53,6 @@ class LoginPage extends GetView<LoginController> {
                               ? () async {
                                   // ToDo: Implementar a criação da conta
                                   print('Criar uma conta');
-                                  
                                 }
                               : null,
                           style: OutlinedButton.styleFrom(
@@ -114,33 +113,36 @@ class IButton extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onTap == null ? () {} : onTap,
-      child: loading == false
-          ? Text(
-              title,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 14.sp,
+    return Container(
+      height: 45.height,
+      child: ElevatedButton(
+        onPressed: onTap == null ? () {} : onTap,
+        child: loading == false
+            ? Text(
+                title,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14.sp,
+                ),
+              )
+            : CircularLoading(
+                color: Colors.white,
+                size: 15.height,
+                lineWidth: 2.width,
               ),
-            )
-          : CircularLoading(
-              color: Colors.white,
-              size: 15.height,
-              lineWidth: 2.width,
-            ),
-      style: ElevatedButton.styleFrom(
-        minimumSize: Size(double.infinity, 45.height),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.radius),
-          side: BorderSide.none,
+        style: ElevatedButton.styleFrom(
+          minimumSize: Size(double.infinity, 45.height),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.radius),
+            side: BorderSide.none,
+          ),
+          primary: onTap == null
+              ? backgroundColor?.withOpacity(0.6) ??
+                  Theme.of(context).primaryColor.withOpacity(0.6)
+              : backgroundColor ?? Theme.of(context).primaryColor,
+          elevation: 0,
+          shadowColor: Colors.transparent,
         ),
-        primary: onTap == null
-            ? backgroundColor?.withOpacity(0.6) ??
-                Theme.of(context).primaryColor.withOpacity(0.6)
-            : backgroundColor ?? Theme.of(context).primaryColor,
-        elevation: 0,
-        shadowColor: Colors.transparent,
       ),
     );
   }

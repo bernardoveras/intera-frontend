@@ -89,6 +89,7 @@ class ProfilePage extends GetView<ProfileController> {
             child: Obx(
               () => IButton(
                 title: 'Salvar',
+                loading: controller.loading.value ?? false,
                 onTap: controller.houveAlteracao.value == true
                     ? () async {
                         FocusManager.instance.primaryFocus?.unfocus();

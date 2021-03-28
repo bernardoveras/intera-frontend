@@ -14,6 +14,7 @@ class ProfileController extends GetxController {
   ProfileController(this.repository, this.dialogService);
 
   RxBool houveAlteracao = false.obs;
+  RxBool loading = false.obs;
 
   RxString nome = ''.obs;
   late TextEditingController nomeController;
@@ -44,6 +45,7 @@ class ProfileController extends GetxController {
 
   Future<void> salvarAlteracoes() async {
     try {
+      loading.value = true;
       if (connectivityService.isConnected == true) {
         if (email.value != null && email.value != '') {
           await repository.changeEmail(email.value!);
@@ -81,6 +83,8 @@ class ProfileController extends GetxController {
       );
     } catch (e) {
       print(e);
+    } finally {
+      loading.value = false;
     }
   }
 
