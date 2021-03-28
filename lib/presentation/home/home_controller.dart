@@ -19,12 +19,13 @@ class HomeController extends GetxController {
       members: [
         Member(nome: 'Juan Veras'),
         Member(nome: 'Junior Veras'),
-        Member(nome: 'PH'),
+        Member(nome: 'PH',valorPago: 66),
       ]
     ),
   ];
 
   Future<void> logout() async {
     await _logout();
+    
   }
 }

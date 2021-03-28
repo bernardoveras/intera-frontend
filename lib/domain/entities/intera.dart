@@ -8,7 +8,9 @@ class Intera {
   final double total;
   List<Member>? members;
 
-  double get totalPago => 100.0;
+  double get totalPago =>
+      members?.fold<double>(0.0, (p, c) => p + c.valorPago) ?? 0.0;
+
   double get totalParaCada => (200 / members!.length).roundToDouble();
   double get progress => (totalPago / total);
 
