@@ -13,19 +13,19 @@ class HomeController extends GetxController {
   double totalDasInteras = 0.0;
 
   List<Intera> interas = <Intera>[
-    Intera(
-      title: 'Carnaval',
-      total: 200,
-      members: [
-        Member(nome: 'Juan Veras'),
-        Member(nome: 'Junior Veras'),
-        Member(nome: 'PH',valorPago: 66),
-      ]
-    ),
+    Intera(title: 'Carnaval', total: 200, members: [
+      Member(nome: 'Juan Veras'),
+      Member(nome: 'Junior Veras'),
+      Member(nome: 'PH', valorPago: 66),
+    ]),
+    Intera(title: 'Carnaval', total: 200, members: [
+      Member(nome: 'Juan Veras'),
+      Member(nome: 'Junior Veras'),
+      Member(nome: 'PH', valorPago: 66),
+    ]),
   ];
 
   Future<void> logout() async {
     await _logout();
-    
   }
 }

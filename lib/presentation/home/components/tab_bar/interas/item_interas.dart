@@ -15,14 +15,16 @@ class ItemInteras extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        top: index == 0 ? 0 : 15.height,
-        bottom: index == index - 1 ? 0 : 15.height,
+        top: index == 0 ? 0 : 2.height,
+        bottom: index == index - 1 ? 0 : 2.height,
       ),
       child: LayoutBuilder(builder: (context, sizes) {
         return Container(
           height: 100.height,
           decoration: BoxDecoration(
-            color: Theme.of(context).cardColor,
+            color: Settings.theme.value == ThemeMode.light
+                ? Colors.white
+                : Colors.black38,
             borderRadius: BorderRadius.circular(8.radius),
             boxShadow: Settings.theme.value == ThemeMode.light
                 ? [
@@ -40,7 +42,7 @@ class ItemInteras extends StatelessWidget {
                 height: 4.height,
                 width: sizes.maxWidth * intera.progress,
                 decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
+                  color: Theme.of(context).accentColor,
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(8.radius),
                     topLeft: Radius.zero,
@@ -58,13 +60,13 @@ class ItemInteras extends StatelessWidget {
                     Row(
                       children: [
                         CircleAvatar(
-                          backgroundColor: Get.isDarkMode
-                              ? Colors.grey.withOpacity(.15)
+                          backgroundColor: Settings.theme.value == ThemeMode.dark
+                              ? Colors.white.withOpacity(0.05)
                               : Theme.of(context)
                                   .primaryColor
-                                  .withOpacity(0.05),
+                                  .withOpacity(0.08),
                           child: Text(
-                            '$index',
+                            '${index + 1}',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ),

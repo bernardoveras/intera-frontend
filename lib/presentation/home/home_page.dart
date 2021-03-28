@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intera/presentation/home/home_controller.dart';
@@ -28,9 +29,16 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: HomeAppBar(logout: controller.logout),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {},
+      floatingActionButton: ZoomIn(
+        duration: Duration(milliseconds: 300),
+        delay: Duration(milliseconds: 600),
+              child: FloatingActionButton(
+          child: Icon(
+            Icons.add,
+            size: 24.height,
+          ),
+          onPressed: () {},
+        ),
       ),
       body: SafeArea(
         child: Column(
