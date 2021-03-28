@@ -15,8 +15,8 @@ class ItemInteras extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        top: index == 0 ? 0 : 15.height,
-        bottom: index == index - 1 ? 0 : 15.height,
+        top: index == 0 ? 0 : 2.height,
+        bottom: index == index - 1 ? 0 : 2.height,
       ),
       child: LayoutBuilder(builder: (context, sizes) {
         return Container(
@@ -66,7 +66,7 @@ class ItemInteras extends StatelessWidget {
                                   .primaryColor
                                   .withOpacity(0.08),
                           child: Text(
-                            '$index',
+                            '${index + 1}',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ),
