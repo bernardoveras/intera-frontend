@@ -38,7 +38,7 @@
 
 # :camera: Screenshots
 <div align="center">
-   <img src="./.github/screenshots/home.png" width="400px">
+   <img src="./.github/assets/screenshots/home.png" width="400px">
 </div>
 
 # :rocket: Technologies
