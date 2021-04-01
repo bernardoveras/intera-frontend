@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "974233198712",
+    "firebase_url": "https://intera-application-default-rtdb.firebaseio.com",
     "project_id": "intera-application",
     "storage_bucket": "intera-application.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "974233198712-gm6h6smk1333e2g13f5n9ko32ishblkr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.veras.intera",
+            "certificate_hash": "7a28888b19540485158f55fe53879a86101770ae"
+          }
+        },
         {
           "client_id": "974233198712-6g309drc1knlqqd9jg5gcv9foe1f1ofm.apps.googleusercontent.com",
           "client_type": 3
