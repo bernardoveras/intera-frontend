@@ -1,23 +1,22 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:intera/domain/models/authentication_params.dart';
 import 'package:intera/domain/models/user_information.dart';
 import 'package:intera/domain/errors/errors.dart';
 import 'package:intera/domain/repositories/authentication_repository.dart';
 import 'package:intera/core/consts.dart';
 
-abstract class ILoginWithEmail {
-  Future<UserInformation?>? call(AuthenticationParams params);
+abstract class ILoginWithGoogle {
+  Future<UserInformation?>? call();
 }
 
-class LoginWithEmail implements ILoginWithEmail {
+class LoginWithGoogle implements ILoginWithGoogle {
   final IAuthenticationRepository repository;
 
-  LoginWithEmail(this.repository);
+  LoginWithGoogle(this.repository);
 
   // @override
-  Future<UserInformation?>? call(AuthenticationParams params) async {
+  Future<UserInformation?>? call() async {
     try {
-      return await repository.loginWithEmail(params);
+      return await repository.loginWithGoogle();
     } on FirebaseAuthException catch (error) {
       if (error.code == 'user-not-found') {
         throw ErrorLoginEmail(message: Consts.USER_NOTFOUND);

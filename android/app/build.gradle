@@ -28,6 +28,11 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 
+   def keystoreProperties = new Properties()
+   def keystorePropertiesFile = rootProject.file('key.properties')
+   if (keystorePropertiesFile.exists()) {
+       keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+   }
 
 android {
     compileSdkVersion 30
@@ -44,9 +49,23 @@ android {
         versionName flutterVersionName
     }
 
+    signingConfigs {
+        release {
+           keyAlias keystoreProperties['keyAlias']
+           keyPassword keystoreProperties['keyPassword']
+           storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+           storePassword keystoreProperties['storePassword']
+        }
+    } 
+
     buildTypes {
         release {
-            signingConfig signingConfigs.debug
+           //Configuração para gerar release
+           signingConfig signingConfigs.release
+        }
+        debug {
+           //Configuração para gerar apk
+           signingConfig signingConfigs.debug
         }
     }
 }

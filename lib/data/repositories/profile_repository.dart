@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intera/domain/errors/errors.dart';
 import 'package:intera/domain/repositories/profile_repository.dart';
-import 'package:intera/shared/settings.dart';
+import 'package:intera/core/settings.dart';
 
 class ProfileRepository implements IProfileRepository {
   @override

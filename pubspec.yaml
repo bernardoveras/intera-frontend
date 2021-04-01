@@ -25,6 +25,8 @@ dependencies:
   firebase_core: ^1.0.2
   # Autenticação com Firebase
   firebase_auth: ^1.0.1
+  # Autenticação com Google
+  google_sign_in: ^5.0.1
   # Package para dialogs
   ndialog: ^4.0.1
   cached_network_image: ^3.0.0-nullsafety
@@ -34,6 +36,9 @@ dependencies:
   auto_size_text: ^3.0.0-nullsafety.0
   # Package para gerar Guid
   uuid: ^3.0.2
+  # Package de icones
+  line_icons: ^2.0.1
+  equatable: ^2.0.0
   flutter:
     sdk: flutter
 
