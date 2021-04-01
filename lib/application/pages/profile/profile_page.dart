@@ -215,9 +215,10 @@ class ProfilePage extends GetView<ProfileController> {
                     () => EditTextField(
                       controller: controller.nameController,
                       onChanged: controller.setname,
-                      labelText: 'Editar name',
+                      labelText: 'Editar nome',
                       focusNode: controller.nameFocus.value,
                       textInputAction: TextInputAction.next,
+                      readOnly: Settings.authType != AuthType.email,
                     ),
                   ),
                 ),
@@ -233,26 +234,30 @@ class ProfilePage extends GetView<ProfileController> {
                       keyboardType: TextInputType.emailAddress,
                       focusNode: controller.emailFocus.value,
                       textInputAction: TextInputAction.next,
+                      readOnly: Settings.authType != AuthType.email,
                     ),
                   ),
                 ),
                 SizedBox(height: 20.height),
-                FadeInLeft(
-                  delay: Duration(milliseconds: 200),
-                  duration: Duration(milliseconds: 400),
-                  child: Obx(
-                    () => EditTextField(
-                      controller: controller.senhaController,
-                      onChanged: controller.setSenha,
-                      labelText: 'Editar senha',
-                      keyboardType: TextInputType.visiblePassword,
-                      focusNode: controller.senhaFocus.value,
-                      obscure: true,
-                      textInputAction: TextInputAction.done,
-                      onFieldSubmitted: (v) => controller.salvarAlteracoes(),
-                    ),
-                  ),
-                ),
+                Settings.authType == AuthType.email
+                    ? FadeInLeft(
+                        delay: Duration(milliseconds: 200),
+                        duration: Duration(milliseconds: 400),
+                        child: Obx(
+                          () => EditTextField(
+                            controller: controller.senhaController,
+                            onChanged: controller.setSenha,
+                            labelText: 'Editar senha',
+                            keyboardType: TextInputType.visiblePassword,
+                            focusNode: controller.senhaFocus.value,
+                            obscure: true,
+                            textInputAction: TextInputAction.done,
+                            onFieldSubmitted: (v) =>
+                                controller.salvarAlteracoes(),
+                          ),
+                        ),
+                      )
+                    : SizedBox(),
               ],
             ),
           ),
@@ -272,6 +277,7 @@ class EditTextField extends StatelessWidget {
   final FocusNode? focusNode;
   final TextEditingController? controller;
   final bool obscure;
+  final bool readOnly;
 
   const EditTextField({
     Key? key,
@@ -284,6 +290,7 @@ class EditTextField extends StatelessWidget {
     this.focusNode,
     this.controller,
     this.obscure = false,
+    this.readOnly = false,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -292,6 +299,7 @@ class EditTextField extends StatelessWidget {
       focusNode: focusNode,
       onChanged: onChanged,
       obscureText: obscure,
+      readOnly: readOnly,
       style: TextStyle(
         color: Settings.theme.value == ThemeMode.light
             ? Colors.black

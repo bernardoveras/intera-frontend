@@ -43,7 +43,6 @@ class LoginController extends GetxController {
         Get.offAllNamed(Routes.HOME);
       }
     } on ErrorLoginEmail catch (error) {
-      /// Fazer um notify com o `error.message`
       dialogService.confirmationDialog(
         name: error.message,
         content: error.message == Consts.USER_NOTFOUND
