@@ -9,7 +9,7 @@ import 'package:intera/domain/serializers/user_information_serializer.dart';
 import 'package:intera/domain/services/local_storage_service.dart';
 import 'package:intera/domain/usecases/login_with_email.dart';
 import 'package:intera/core/consts.dart';
-import 'package:intera/core/navigation/routes.dart';
+import 'package:intera/application/navigation/routes.dart';
 import 'package:intera/core/services/dialog_service.dart';
 import 'package:intera/core/settings.dart';
 

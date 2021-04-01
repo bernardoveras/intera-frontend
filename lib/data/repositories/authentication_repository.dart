@@ -8,7 +8,7 @@ import 'package:intera/domain/repositories/authentication_repository.dart';
 import 'package:intera/domain/serializers/user_information_serializer.dart';
 import 'package:intera/domain/services/local_storage_service.dart';
 import 'package:intera/core/consts.dart';
-import 'package:intera/core/navigation/routes.dart';
+import 'package:intera/application/navigation/routes.dart';
 import 'package:intera/core/services/dialog_service.dart';
 import 'package:intera/core/settings.dart';
 
@@ -52,7 +52,8 @@ class AuthenticationRepository implements IAuthenticationRepository {
           await firebaseAuth.signInWithCredential(credential);
 
       Settings.authType = AuthType.google;
-      await localStorage.add(PATH.AUTH_TYPE, Settings.authType!.index.toString());
+      await localStorage.add(
+          PATH.AUTH_TYPE, Settings.authType!.index.toString());
 
       return serializer.fromFirebase(userCredential.user!);
     } else {
@@ -70,6 +71,19 @@ class AuthenticationRepository implements IAuthenticationRepository {
         await firebaseAuth.signOut();
         await _clearSettingsAndStorage();
         Get.offAllNamed(Routes.LOGIN);
+      },
+    );
+  }
+
+  @override
+  Future<void> resetPassword(String email) async {
+    await dialogService.confirmationDialog(
+      name: 'Redefinir senha',
+      content: 'Deseja realmente redefinir sua senha?',
+      cancelText: 'Cancelar',
+      // closeOnConfirm: false,
+      onConfirm: () async {
+        await firebaseAuth.sendPasswordResetEmail(email: email);
       },
     );
   }

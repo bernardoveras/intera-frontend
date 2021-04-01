@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/screenutil_init.dart';
 import 'package:get/get.dart';
 import 'package:intera/core/settings.dart';
 import '../core/theme/theme.dart';
-import '../core/navigation/navigation.dart';
+import '../application/navigation/navigation.dart';
 
 class App extends StatelessWidget {
   final String initialRoute;

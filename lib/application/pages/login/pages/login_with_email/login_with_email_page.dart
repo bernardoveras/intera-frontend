@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intera/application/navigation/routes.dart';
 import 'package:intera/application/pages/login/components/components.dart';
 import 'package:intera/application/pages/login/login_page.dart';
 import 'package:intera/core/components/checkbox.dart';
@@ -33,26 +34,31 @@ class LoginWithEmailPage extends GetView<LoginWithEmailController> {
           ),
         ),
         actions: [
-          Padding(
-            padding: EdgeInsets.only(right: 20.width),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  'Esqueceu sua senha?',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w500,
+          GestureDetector(
+            onTap: (){
+              Get.toNamed(Routes.RESET_PASSWORD);
+            },
+                      child: Padding(
+              padding: EdgeInsets.only(right: 20.width),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    'Esqueceu sua senha?',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
-                ),
-                SizedBox(height: 8.height),
-                Container(
-                  height: 2.5.height,
-                  width: 35.width,
-                  color: Theme.of(context).primaryColor,
-                ),
-              ],
+                  SizedBox(height: 8.height),
+                  Container(
+                    height: 2.5.height,
+                    width: 35.width,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ],
+              ),
             ),
           ),
         ],

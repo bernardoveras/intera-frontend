@@ -5,4 +5,5 @@ abstract class IAuthenticationRepository {
   Future<UserInformation> loginWithEmail(AuthenticationParams params);
   Future<UserInformation> loginWithGoogle();
   Future<void> logout();
+  Future<void> resetPassword(String email);
 }

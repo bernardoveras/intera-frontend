@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intera/core/navigation/routes.dart';
+import 'package:intera/application/navigation/routes.dart';
 import 'package:intera/core/services/connectivity_services.dart';
 import 'package:intera/core/settings.dart';
 import 'package:intera/core/theme/theme.dart';
