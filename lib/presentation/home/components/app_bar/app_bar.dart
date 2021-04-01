@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'package:intera/shared/settings.dart';
 import '../../../../shared/extensions/screen_util_extension.dart';
 import 'components.dart';
 

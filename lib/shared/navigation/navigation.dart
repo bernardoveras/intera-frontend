@@ -22,6 +22,13 @@ class Navigation {
       transition: Transition.topLevel,
     ),
     GetPage(
+      name: Routes.LOGIN_WITH_EMAIL,
+      page: () => LoginWithEmailPage(),
+      binding: LoginWithEmailBinding(),
+      transition: Transition.downToUp,
+      curve: Curves.fastLinearToSlowEaseIn,
+    ),
+    GetPage(
       name: Routes.PROFILE,
       page: () => ProfilePage(),
       binding: ProfileBinding(),

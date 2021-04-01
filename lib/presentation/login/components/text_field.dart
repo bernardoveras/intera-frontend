@@ -8,6 +8,8 @@ class LoginTextField extends StatefulWidget {
   final String? hintText;
   final bool obscure;
   final TextStyle? style;
+  final TextStyle? titleStyle;
+  final TextStyle? hintStyle;
   final FocusNode? focusNode;
   final TextEditingController? controller;
   final List<TextInputFormatter>? inputFormatters;
@@ -19,6 +21,9 @@ class LoginTextField extends StatefulWidget {
   final String? Function(String?)? validator;
   final String? errorText;
   final Icon? preffixIcon;
+  final BorderRadius? borderRadius;
+  final InputBorder? focusedBorder;
+  final bool? filled;
 
   const LoginTextField({
     Key? key,
@@ -27,16 +32,21 @@ class LoginTextField extends StatefulWidget {
     this.obscure = false,
     this.style,
     this.focusNode,
+    this.titleStyle,
     this.controller,
     this.inputFormatters,
     this.keyboardType,
     this.onChanged,
     this.onFieldSubmitted,
     this.readOnly = false,
+    this.hintStyle,
     this.textInputAction,
+    this.focusedBorder,
     this.errorText,
     this.validator,
     this.preffixIcon,
+    this.borderRadius,
+    this.filled = true,
   }) : super(key: key);
 
   @override
@@ -60,9 +70,8 @@ class _LoginTextFieldState extends State<LoginTextField> {
         widget.titleText != null
             ? Text(
                 widget.titleText!,
-                style: TextStyle(
-                  color: Colors.grey.shade500,
-                ),
+                style:
+                    widget.titleStyle ?? TextStyle(color: Colors.grey.shade500),
               )
             : SizedBox.shrink(),
         SizedBox(height: widget.titleText != null ? 8.height : 0),
@@ -78,15 +87,10 @@ class _LoginTextFieldState extends State<LoginTextField> {
           validator: widget.validator,
           obscureText: showPass,
           style: widget.style != null
-              ? widget.style!.copyWith(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: showPass == true ? 5 : null,
-                )
+              ? widget.style
               : TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
-                  letterSpacing: showPass == true ? 5 : null,
                 ),
           autocorrect: false,
           decoration: InputDecoration(
@@ -121,17 +125,18 @@ class _LoginTextFieldState extends State<LoginTextField> {
               horizontal: 20.width,
               vertical: 10.height,
             ),
-            filled: true,
+            filled: widget.filled,
             hintText: widget.hintText ?? widget.titleText,
-            hintStyle: TextStyle(
-              color: Colors.grey.shade400,
-              fontWeight: FontWeight.w500,
-              letterSpacing: 0,
-            ),
+            hintStyle: widget.hintStyle ??
+                TextStyle(
+                  color: Colors.grey.shade400,
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: 0,
+                ),
             border: outlineBorder(),
             errorBorder: outlineBorder(),
             enabledBorder: outlineBorder(),
-            focusedBorder: outlineBorder(),
+            focusedBorder: widget.focusedBorder ?? outlineBorder(),
             disabledBorder: outlineBorder(),
             focusedErrorBorder: outlineBorder(),
           ),
@@ -143,7 +148,7 @@ class _LoginTextFieldState extends State<LoginTextField> {
 
   InputBorder outlineBorder() {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: widget.borderRadius ?? BorderRadius.circular(8.radius),
       borderSide: BorderSide.none,
     );
   }

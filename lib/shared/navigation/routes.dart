@@ -5,6 +5,7 @@ import 'package:intera/shared/settings.dart';
 class Routes {
   static const HOME = '/';
   static const LOGIN = '/login';
+  static const LOGIN_WITH_EMAIL = '/login/email';
   static const PROFILE = '/profile';
 
   static Future<String> get initialRoute async {

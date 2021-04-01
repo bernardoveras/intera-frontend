@@ -3,6 +3,7 @@ import 'package:intera/presentation/login/components/form.dart';
 import 'package:intera/presentation/login/login_controller.dart';
 import 'package:intera/shared/components/circular_loading.dart';
 import 'package:intera/shared/extensions/screen_util_extension.dart';
+import 'package:intera/shared/navigation/routes.dart';
 import 'components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -53,6 +54,7 @@ class LoginPage extends GetView<LoginController> {
                               ? () async {
                                   // ToDo: Implementar a criação da conta
                                   print('Criar uma conta');
+                                  // Get.toNamed(Routes.LOGIN_WITH_EMAIL);
                                 }
                               : null,
                           style: OutlinedButton.styleFrom(
@@ -103,6 +105,7 @@ class IButton extends StatelessWidget {
   final bool loading;
   final void Function()? onTap;
   final Color? backgroundColor;
+  final BorderRadiusGeometry? borderRadius;
 
   const IButton({
     Key? key,
@@ -110,11 +113,11 @@ class IButton extends StatelessWidget {
     required this.onTap,
     this.backgroundColor,
     this.loading = false,
+    this.borderRadius,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: 45.height,
       child: ElevatedButton(
         onPressed: onTap == null ? () {} : onTap,
         child: loading == false
@@ -133,13 +136,14 @@ class IButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           minimumSize: Size(double.infinity, 45.height),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.radius),
+            borderRadius: borderRadius ?? BorderRadius.circular(8.radius),
             side: BorderSide.none,
           ),
           primary: onTap == null
               ? backgroundColor?.withOpacity(0.6) ??
                   Theme.of(context).primaryColor.withOpacity(0.6)
               : backgroundColor ?? Theme.of(context).primaryColor,
+
           elevation: 0,
           shadowColor: Colors.transparent,
         ),
