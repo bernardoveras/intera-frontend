@@ -24,48 +24,55 @@ class LoginPage extends GetView<LoginController> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      LineIcons.alternateWavyMoneyBill,
-                      color: Theme.of(context).primaryColor,
-                      size: 50.height,
-                    ),
-                    SizedBox(height: 20.height),
-                    Text(
-                      'Seja bem-vindo(a)\na Intera',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 24.sp,
-                        fontWeight: FontWeight.bold,
+                FadeInDown(
+                  duration: Duration(milliseconds: 400),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        LineIcons.alternateWavyMoneyBill,
+                        color: Theme.of(context).primaryColor,
+                        size: 50.height,
                       ),
-                    ),
-                  ],
+                      SizedBox(height: 20.height),
+                      Text(
+                        'Seja bem-vindo(a)\na Intera',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 24.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    LoginButton(
-                      name: 'Continuar com Email',
-                      icon: Icons.mail_outline_rounded,
-                      onTap: () => Get.toNamed(Routes.LOGIN_WITH_EMAIL),
-                    ),
-                    SizedBox(height: 10.height),
-                    LoginButton(
-                      name: 'Continuar com Apple',
-                      icon: LineIcons.apple,
-                      onTap: () {},
-                    ),
-                    SizedBox(height: 10.height),
-                    LoginButton(
-                      name: 'Continuar com Google',
-                      icon: LineIcons.googlePlus,
-                      onTap: () async => await controller.autenticarComGoogle(),
-                    ),
-                  ],
+                FadeInUp(
+                  duration: Duration(milliseconds: 400),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      LoginButton(
+                        name: 'Continuar com Email',
+                        icon: Icons.mail_outline_rounded,
+                        onTap: () => Get.toNamed(Routes.LOGIN_WITH_EMAIL),
+                      ),
+                      SizedBox(height: 10.height),
+                      LoginButton(
+                        name: 'Continuar com Apple',
+                        icon: LineIcons.apple,
+                        onTap: () {},
+                      ),
+                      SizedBox(height: 10.height),
+                      LoginButton(
+                        name: 'Continuar com Google',
+                        icon: LineIcons.googlePlus,
+                        onTap: () async =>
+                            await controller.autenticarComGoogle(),
+                      ),
+                    ],
+                  ),
                 ),
                 Obx(
                   () => FadeInUp(
