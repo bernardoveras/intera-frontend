@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intera/application/pages/home/components/tab_bar/transacoes/tab_transacoes.dart';
 import 'package:intera/domain/models/intera.dart';
 import 'interas/tab_interas.dart';
 
@@ -16,10 +17,7 @@ class TabViewComponent extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         children: [
           TabInteras(interas: interas),
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: Text('1', style: TextStyle(color: Colors.red)),
-          ),
+          TabTransacoes(interas: interas),
         ],
       ),
     );
