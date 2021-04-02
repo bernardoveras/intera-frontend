@@ -5,6 +5,7 @@ import 'package:intera/domain/serializers/user_information_serializer.dart';
 class Routes {
   static const HOME = '/';
   static const LOGIN = '/login';
+  static const CREATE_ACCOUNT = '$LOGIN/create_account';
   static const LOGIN_WITH_EMAIL = '$LOGIN/email';
   static const RESET_PASSWORD = '$LOGIN_WITH_EMAIL/reset_password';
   static const PROFILE = '/profile';

@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:intera/domain/errors/firebase_errors.dart';
 import 'package:intera/domain/models/authentication_params.dart';
 import 'package:intera/domain/models/user_information.dart';
 import 'package:intera/domain/errors/errors.dart';
@@ -19,13 +20,7 @@ class LoginWithEmail implements ILoginWithEmail {
     try {
       return await repository.loginWithEmail(params);
     } on FirebaseAuthException catch (error) {
-      if (error.code == 'user-not-found') {
-        throw ErrorLoginEmail(message: Consts.USER_NOTFOUND);
-      } else if (error.code == 'wrong-password') {
-        throw ErrorLoginEmail(message: Consts.INCORRECT_PASSWORD);
-      } else {
-        throw InternalError(message: error.message);
-      }
+      throw FirebaseError.codeToError(error.code);
     } catch (e) {
       throw InternalError(message: e.toString());
     }

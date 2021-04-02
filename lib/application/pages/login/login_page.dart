@@ -74,10 +74,8 @@ class LoginPage extends GetView<LoginController> {
                     from: 30,
                     child: OutlinedButton(
                       onPressed: controller.loading.value == false
-                          ? () async {
-                              // ToDo: Implementar a criação da conta
-                              print('Criar uma conta');
-                              // Get.toNamed(Routes.LOGIN_WITH_EMAIL);
+                          ? () {
+                              Get.toNamed(Routes.CREATE_ACCOUNT);
                             }
                           : null,
                       style: OutlinedButton.styleFrom(

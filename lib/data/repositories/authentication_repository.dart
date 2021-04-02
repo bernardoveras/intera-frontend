@@ -88,6 +88,17 @@ class AuthenticationRepository implements IAuthenticationRepository {
     );
   }
 
+  @override
+  Future<UserCredential?> createAccount(NewAccountParams params) async {
+    UserCredential credential =
+        await firebaseAuth.createUserWithEmailAndPassword(
+      email: params.email,
+      password: params.password,
+    );
+
+    return credential;
+  }
+
   Future<void> _clearSettingsAndStorage() async {
     await localStorage.remove(PATH.USER);
     await localStorage.remove(PATH.EXIBIR_TOTAL_INTERAS);
