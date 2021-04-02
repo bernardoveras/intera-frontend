@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:intera/domain/errors/firebase_errors.dart';
 import 'package:intera/domain/models/authentication_params.dart';
 import 'package:intera/domain/errors/errors.dart';
 import 'package:intera/domain/models/user_information.dart';
@@ -70,13 +71,14 @@ class LoginWithEmailController extends GetxController {
 
         Get.offAllNamed(Routes.HOME);
       }
-    } on ErrorLoginEmail catch (error) {
+    } on FirebaseError catch (error) {
       /// Fazer um notify com o `error.message`
+
       dialogService.confirmationDialog(
           name: error.message,
-          content: error.message == Consts.USER_NOTFOUND
+          content: error.type == FirebaseErrorType.userNotFound
               ? 'O usuário informado não foi encontrado, verifique seu nome de usuário'
-              : error.message == Consts.INCORRECT_PASSWORD
+              : error.type == FirebaseErrorType.wrongPassword
                   ? 'A senha informada está incorreta, verifique e tente novamente'
                   : error.message,
           confirmationText: 'Tentar novamente',
@@ -107,6 +109,12 @@ class LoginWithEmailController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    AuthenticationParams? routeArguments = Get.arguments;
+    if (routeArguments != null) {
+      email.value = routeArguments.email;
+      senha.value = routeArguments.password;
+    }
+
     remember.value = Settings.remember;
     emailController = TextEditingController(text: email.value);
     senhaController = TextEditingController(text: senha.value);

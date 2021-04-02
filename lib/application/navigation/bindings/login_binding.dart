@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
 import 'package:intera/application/pages/login/login_controller.dart';
+import 'package:intera/application/pages/login/pages/create_account/create_account_controller.dart';
 import 'package:intera/application/pages/login/pages/login_with_email/login_with_email_controller.dart';
 import 'package:intera/application/pages/login/pages/reset_password/reset_password_controller.dart';
+import 'package:intera/domain/usecases/create_account.dart';
 import 'package:intera/domain/usecases/login_with_email.dart';
 import 'package:intera/domain/usecases/login_with_google.dart';
 import 'package:intera/domain/usecases/reset_password.dart';
@@ -39,5 +41,14 @@ class ResetPasswordBinding extends Bindings {
   void dependencies() {
     Get.lazyPut<IResetPassword>(() => ResetPassword(Get.find()));
     Get.lazyPut(() => ResetPasswordController(Get.find(), Get.find()));
+  }
+}
+
+class CreateAccountBinding extends Bindings {
+  @override
+  void dependencies() {
+    Get.lazyPut<ICreateAccount>(() => CreateAccount(Get.find()));
+    Get.lazyPut<ILoginWithEmail>(() => LoginWithEmail(Get.find()));
+    Get.lazyPut(() => CreateAccountController(Get.find(), Get.find()));
   }
 }

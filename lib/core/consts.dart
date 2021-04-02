@@ -13,4 +13,9 @@ class Consts{
 
   static const String USER_NOTFOUND = 'Usuário não encontrado';
   static const String INCORRECT_PASSWORD = 'Senha incorreta';
+  static const String EMAIL_IN_USE = 'O email já está em uso';
+  static const String INVALID_EMAIL = 'O email está inválido';
+  static const String WEAK_PASSWORD = 'Senha inválida';
+  static const String USER_DISABLED = 'Usuário desativado';
+
 }

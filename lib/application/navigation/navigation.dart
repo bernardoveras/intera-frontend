@@ -20,6 +20,12 @@ class Navigation {
       transition: Transition.topLevel,
     ),
     GetPage(
+      name: Routes.CREATE_ACCOUNT,
+      page: () => CreateAccountPage(),
+      binding: CreateAccountBinding(),
+      transition: Transition.topLevel,
+    ),
+    GetPage(
       name: Routes.LOGIN_WITH_EMAIL,
       page: () => LoginWithEmailPage(),
       binding: LoginWithEmailBinding(),
